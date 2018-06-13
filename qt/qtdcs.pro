@@ -126,22 +126,22 @@ FORMS += \
     dial_1asm.ui
 
 
-INCLUDEPATH += ../../../ServeurUdp/libshm/include/
-INCLUDEPATH += ../../../ServeurUdp/libframe/include/
-INCLUDEPATH += ../../../ServeurUdp/include/
+INCLUDEPATH += ../../Lib/libshm/include/
+INCLUDEPATH += ../../Lib/libframe/include/
+INCLUDEPATH += ../../common/include/
 
 
 INCLUDEPATH += $$PWD/../../../ServeurUdp/build/lib
 DEPENDPATH += $$PWD/../../../ServeurUdp//build/lib
 
-unix:!macx: LIBS += -L$$PWD/../../../ServeurUdp/build/lib/ -lringshm
+unix:!macx: LIBS += -L$$PWD/../../build/lib/ -lringshm
 
 INCLUDEPATH += $$PWD/../../../ServeurUdp/build
 DEPENDPATH += $$PWD/../../../ServeurUdp/build
 
-unix:!macx: LIBS += -L$$PWD/../../../ServeurUdp/build/lib/ -lframe
+unix:!macx: LIBS += -L$$PWD/../../build/lib/ -lframe
 
 INCLUDEPATH += $$PWD/../../../ServeurUdp/build
 DEPENDPATH += $$PWD/../../../ServeurUdp/build
 
-unix:!macx: PRE_TARGETDEPS += $$PWD/../../../ServeurUdp/build/lib/libframe.a
+unix:!macx: PRE_TARGETDEPS += $$PWD/../../build/lib/libframe.a
