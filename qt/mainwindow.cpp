@@ -53,6 +53,7 @@ using namespace std;
 #include "dial_calib.h"
 #include "dial_1asm.h"
 #include "version.h"
+#include "Version.h"
 
 //=================================================
 //=================================================
@@ -269,7 +270,7 @@ void MainWindow::closeEvent(QCloseEvent *event)
 	 static u32 cnt = 0;
 	int chan;
 	 cnt++;
-     QString version = " Version = " + QString(__DCS_VERSION_STRING__)+ "  " + QString(__DATE__) + "  " + QString(__TIME__);
+     QString version = " Version = " + QString(__DCS_VERSION_STRING__) +  QString(GITVER) + "  " + QString(__DATE__) + "  " + QString(__TIME__) ;
 	 if(tcp.IsConnected()) {
          ui->statusBar->showMessage( ElapsedTime( cnt) + " ... Connected to Amc" +"\t" + version);
 	 } else {

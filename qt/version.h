@@ -1,6 +1,9 @@
 #ifndef VERSION_H
 #define VERSION_H
-
-#define __DCS_VERSION_STRING__ "1.0.002"
+#ifdef REPOSITORY_VERSION
+#define __DCS_VERSION_STRING__ "1.0.002_"REPOSITORY_VERSION
+#else
+#define __DCS_VERSION_STRING__ "1.0.002_"
+#endif
 
 #endif // VERSION_H

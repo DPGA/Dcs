@@ -1,0 +1,12 @@
+#ifndef EXAMPLE_H
+#define EXAMPLE_H
+
+/*
+ * These values are automatically set according to their cmake variables.
+ */
+#define EXAMPLE "${VALUE}"
+#define VERSION "${VERSION}"
+#define NUMBER  ${NUMBER}
+#define GITVER  "${GIT_BUILD_VERSION}"
+
+#endif /* EXAMPLE_H */

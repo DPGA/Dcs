@@ -1,11 +1,33 @@
 cmake_minimum_required(VERSION 2.9)
 project(qtdcs)
 
+
+
+IF(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/.git)
+  FIND_PACKAGE(Git)
+  IF(GIT_FOUND)
+    EXECUTE_PROCESS(
+      COMMAND ${GIT_EXECUTABLE} rev-parse --short HEAD
+      WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
+      OUTPUT_VARIABLE "GIT_BUILD_VERSION"
+      ERROR_QUIET
+      OUTPUT_STRIP_TRAILING_WHITESPACE)
+    MESSAGE( STATUS "Git version: ${BUILD_VERSION}" )
+  ELSE(GIT_FOUND)
+    SET(GIT_BUILD_VERSION 0)
+  ENDIF(GIT_FOUND)
+ENDIF(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/.git)
+
+message(INFO ${Green} " git version=" ${GIT_BUILD_VERSION}  ${White}) 
+
+CONFIGURE_FILE(${CMAKE_CURRENT_SOURCE_DIR}/qt/Version.h.in ${CMAKE_CURRENT_SOURCE_DIR}/qt/Version.h )
+
 add_custom_target(qtdcs ALL
+		 
         COMMAND qmake ${CMAKE_CURRENT_SOURCE_DIR}/qt/qtdcs.pro 
-		  COMMAND make -f ${CMAKE_CURRENT_BINARY_DIR}/Makefile
+		  COMMAND make  -f ${CMAKE_CURRENT_BINARY_DIR}/Makefile
 		  COMMAND cp ${CMAKE_CURRENT_BINARY_DIR}/qtdcs ${CMAKE_CURRENT_BINARY_DIR}/../bin/.
 )
 
 
-message(INFO ${Green} " Source file="${CMAKE_CURRENT_SOURCE_DIR}  ${White}) 
+message(INFO ${Green} " Source file=" ${CMAKE_CURRENT_SOURCE_DIR}  ${White}) 
