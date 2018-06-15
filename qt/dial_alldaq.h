@@ -20,6 +20,7 @@
 #include "Amc.h"
 #include "Asm.h"
 #include "Thor.h"
+#include "ipc.h"
 
 //===============================================
 //===============================================
@@ -29,7 +30,7 @@ class Dial_AllDaq;
 
 //===============================================
 //===============================================
-class Dial_AllDaq : public QDialog
+class Dial_AllDaq : public QDialog, public ipc
 {
     Q_OBJECT
 
