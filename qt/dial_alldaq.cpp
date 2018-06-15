@@ -18,7 +18,7 @@ using namespace std;
 //===============================================
 //===============================================
 Dial_AllDaq::Dial_AllDaq(CAmc *amc, CAsm* asmm, CThor *thor, u32 mask, u16 seq, QWidget *parent) :
-    QDialog(parent),
+    QDialog(parent),ipc(),
     ui(new Ui::Dial_AllDaq)
 {
 	p_amc = amc;
@@ -463,6 +463,7 @@ void Dial_AllDaq::on_pushButton_Stop_clicked()
         m_daq = -1;
      display();
     ui->textEdit_Msg->setTextColor(m_color);
+    ipcSend(IPCSTOP,"Stop");
 
 } // on_pushButton_Stop_clicked
 
@@ -496,7 +497,7 @@ void Dial_AllDaq::on_pushButton_Start_clicked()
 {
     //*******************************
 
-
+	 ipcSend(IPCDAQ,1000);
     int ret[3] = {0,0,0};
     u32 run = 1;
     u64 tmp = ComputeMask(m_usemask,p_thordt->rw.PreTrig_Mask);
