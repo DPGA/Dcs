@@ -196,6 +196,10 @@ private:
     QString PathMonitor;
     QString PathDir;
     bool OnStartMonitor;
+    QString PathHvServer;
+    bool OnStartHvServer;
+    QString ArgsHvServer;
+    QProcess *HvServer;
     QProcess *myProcess;
  };
 //===============================================

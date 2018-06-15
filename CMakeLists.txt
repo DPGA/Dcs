@@ -8,4 +8,4 @@ add_custom_target(qtdcs ALL
 )
 
 
-message(INFO ${Green} " Source file="${CMAKE_CURRENT_SOURCE_DIR}  ${White}) 
+message(INFO ${Green} " Source file=" ${CMAKE_CURRENT_SOURCE_DIR}  ${White}) 

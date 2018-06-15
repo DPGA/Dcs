@@ -75,7 +75,8 @@ MainWindow::MainWindow(QWidget *parent) :
 	m_interv = 5;
 	m_auto = Qt::Unchecked;
 	m_daqsequence = 0;
-
+	OnStartHvServer = false;
+	OnStartMonitor = false;
 	XmlParser();
 
 	amc.SetTcp(&tcp);
@@ -111,6 +112,18 @@ MainWindow::MainWindow(QWidget *parent) :
 	p_timer = new QTimer(this);
 	connect(p_timer,SIGNAL(timeout()), this, SLOT(TimerDisplay()));
 	p_timer->start(1000);
+	
+	HvServer = new QProcess(this);
+	HvServer->setStandardOutputFile("/tmp/hv.log");
+
+
+    if ((OnStartHvServer) && (HvServer->state() == QProcess::NotRunning)) {
+        QStringList arguments;
+        arguments << ArgsHvServer;
+        HvServer->start(PathHvServer, arguments);
+          qDebug() << "path ht = " << PathHvServer << ArgsHvServer;  
+    }
+	
     myProcess = new QProcess(this);
     if ((OnStartMonitor) && (myProcess->state() == QProcess::NotRunning)) {
         QStringList arguments;
@@ -221,7 +234,7 @@ void MainWindow::closeEvent(QCloseEvent *event)
 			 if (child.attribute("TITLE") == "SAMPLES")     m_samples = child.attribute("ID").toUInt();
 			 if (child.attribute("TITLE") == "VERBOSE")     m_verbose = child.attribute("ID").toUInt();
 			 if (child.attribute("TITLE") == "NIOSVERBOSE") m_niosverbose = child.attribute("ID").toUInt();
-             if (child.attribute("TITLE") == "DAQSEQUENCE") {tmp = child.attribute("ID");  m_daqsequence = tmp.toUShort(&ok, 16);}
+    		         if (child.attribute("TITLE") == "DAQSEQUENCE") {tmp = child.attribute("ID");  m_daqsequence = tmp.toUShort(&ok, 16);}
 			 if (child.attribute("TITLE") == "AsmFE_0")     checkid(0, child.attribute("ID"), child.attribute("ACTIVED").toUInt());
 			 if (child.attribute("TITLE") == "AsmFE_1")     checkid(1, child.attribute("ID"), child.attribute("ACTIVED").toUInt());
 			 if (child.attribute("TITLE") == "AsmFE_2")     checkid(2, child.attribute("ID"), child.attribute("ACTIVED").toUInt());
@@ -238,8 +251,9 @@ void MainWindow::closeEvent(QCloseEvent *event)
 			 
 			 if (child.attribute("TITLE") == "HV_IP")       hvip = child.attribute("ID");
 			 if (child.attribute("TITLE") == "HV_PORT")     hvport = child.attribute("ID").toInt();
-             if (child.attribute("TITLE") == "MONITOR")     {PathMonitor = child.attribute("PATH");OnStartMonitor = (bool) child.attribute("START").toInt();}
-             if (child.attribute("TITLE") == "DIRECTORY")   PathDir = child.attribute("DIR");
+            		 if (child.attribute("TITLE") == "MONITOR")     {PathMonitor = child.attribute("PATH");OnStartMonitor = (bool) child.attribute("START").toInt();}
+            		 if (child.attribute("TITLE") == "HVSERVER")    {PathHvServer = child.attribute("PATH");ArgsHvServer = child.attribute("ARGS");OnStartHvServer = (bool) child.attribute("START").toInt();}
+            		 if (child.attribute("TITLE") == "DIRECTORY")   PathDir = child.attribute("DIR");
 			 child = child.nextSiblingElement() ;
 		 }
 		 tcp.SetIP(ip,port);
