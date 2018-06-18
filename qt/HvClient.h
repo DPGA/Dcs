@@ -79,6 +79,7 @@ public:
    int         Dump          (bool Connected = false);
    int         SwitchHV      (u32 mask, bool onoff , bool Connected = false);
    int         ParseXmlOrder (QString f_name);
+   int 		   ParseXmlOrder(QString f_name,const bool b);
    int         LoadOrder     (int mod, bool Connected = false);
    int         ServerStop    (bool Connected = false);
 

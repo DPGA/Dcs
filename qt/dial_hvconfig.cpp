@@ -87,7 +87,7 @@ void Dial_HvConfig::on_pushButton_Do_clicked()
      }
     ui->lineEdit_File-> setText(name);
     ui->textEdit_Msg->append("Load Orders Command with " + name);
-    ret = p_hv->ParseXmlOrder(name);
+    ret = p_hv->ParseXmlOrder(name,true);
     if(ret == NO_ERROR) {
         ui->textEdit_Msg->setTextColor("green");
         ui->textEdit_Msg->append("Parse Xml Successfull");
@@ -107,6 +107,7 @@ void Dial_HvConfig::on_pushButton_Do_clicked()
             else if(ui->radioButton_Sel_3->isChecked()) mod = 3;
             else mod = 0;
             ret = p_hv->LoadOrder(mod);
+    
         }
     }
     if(ret == NO_ERROR) {

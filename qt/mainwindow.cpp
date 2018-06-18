@@ -120,8 +120,8 @@ MainWindow::MainWindow(QWidget *parent) :
 		HvServer = new QProcess(this);
 		HvServer->setStandardOutputFile("/tmp/hv.log");
 		if ((OnStartHvServer) && (HvServer->state() == QProcess::NotRunning)) {
-			QStringList arguments;
-			arguments << "--serveur" <<"9760" << "--config" <<"/home/daq/Dpga/ConfigDcs/Coeff/hvconfig.xml" << "--dircoeff"<< "/home/daq/Dpga/ConfigDcs/Coeff";
+			QStringList arguments = QString(ArgsHvServer).split(" ");
+	//		arguments << "--serveur" <<"9760" << "--config" <<"/home/daq/Dpga/ConfigDcs/Coeff/hvconfig.xml" << "--dircoeff"<< "/home/daq/Dpga/ConfigDcs/Coeff";
 			HvServer->start(PathHvServer, arguments);
 			qDebug() << "path ht = " << PathHvServer << arguments.at(0) << arguments.at(1) << arguments.at(2);  
 		}

@@ -128,6 +128,58 @@ int CHvClient::SwitchHV   (u32 mask, bool onoff , bool Connected)
 
 //=========================================================================
 //=========================================================================
+int CHvClient::ParseXmlOrder(QString f_name,const bool b)
+{
+	QString errorStr;
+    int errorLine;
+    int errorColumn;
+    bool ok;
+	QDomDocument document;
+	
+	QFile file(f_name);
+    if(!file.open(QIODevice::ReadOnly | QIODevice::Text))
+    {
+        qDebug() << f_name << " Failed to open the file for reading.";
+        return(errno);
+    }
+    else
+    {
+        // loading
+        if(!document.setContent(&file,false, &errorStr, &errorLine, &errorColumn))
+        {
+            qDebug() << "Failed to load the file for reading.";
+            qDebug() << "Error: Parse error at line " << errorLine << ", "
+                                     << "column " << errorColumn << ": "
+                                     << qPrintable(errorStr);
+            return(errno);
+        }
+        file.close();
+    }
+	
+	QDomElement root = document.firstChildElement();
+	QDomNodeList ModulesList = root.elementsByTagName("MODULE");
+	for (int i=0;i<ModulesList.size();++i) {
+		QDomElement Modules = ModulesList.at(i).toElement();
+		QDomNodeList HvChannels = Modules.elementsByTagName("NAME");
+
+		for (int j=0;j<HvChannels.size();++j) {
+			QDomNode HvCh = HvChannels.at(j);
+			if (HvCh.isElement()) {
+				QDomElement Element = HvCh.toElement();
+				qDebug() << i << " " << j << " TITLE " << Element.attribute("TITLE") << " Value " << Element.attribute("VALUE") << " COMMENT " << Element.attribute("COMMENT");
+				double dd = Element.attribute("VALUE").toDouble(&ok);
+				hvdt.hvmod[i].hvchan[j].order = (short)(dd * 10.0);
+			}
+		}
+	}
+	return (NO_ERROR);
+
+}
+
+
+
+//=========================================================================
+//=========================================================================
 int CHvClient::ParseXmlOrder(QString f_name)
 {
 	QString title ;
