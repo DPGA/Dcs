@@ -112,17 +112,36 @@ MainWindow::MainWindow(QWidget *parent) :
 	p_timer = new QTimer(this);
 	connect(p_timer,SIGNAL(timeout()), this, SLOT(TimerDisplay()));
 	p_timer->start(1000);
-	
-	HvServer = new QProcess(this);
-	HvServer->setStandardOutputFile("/tmp/hv.log");
 
 
-    if ((OnStartHvServer) && (HvServer->state() == QProcess::NotRunning)) {
-        QStringList arguments;
-        arguments << ArgsHvServer;
-        HvServer->start(PathHvServer, arguments);
-          qDebug() << "path ht = " << PathHvServer << ArgsHvServer;  
-    }
+	QFile file("/var/lock/ht-caen");
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+		qDebug() << "new process ht-caen";
+		HvServer = new QProcess(this);
+		HvServer->setStandardOutputFile("/tmp/hv.log");
+		if ((OnStartHvServer) && (HvServer->state() == QProcess::NotRunning)) {
+			QStringList arguments;
+			arguments << "--serveur" <<"9760" << "--config" <<"/home/daq/Dpga/ConfigDcs/Coeff/hvconfig.xml" << "--dircoeff"<< "/home/daq/Dpga/ConfigDcs/Coeff";
+			HvServer->start(PathHvServer, arguments);
+			qDebug() << "path ht = " << PathHvServer << arguments.at(0) << arguments.at(1) << arguments.at(2);  
+		}
+//		while (HvServer->state() != QProcess::Running);
+		if (file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+			qDebug() << "process id ht-caen " <<	HvServer->pid();
+			QTextStream out(&file);
+			out << "Process Id " <<	HvServer->pid();
+			file.close();
+		}	
+	}
+	else {
+		QString line = file.readLine();
+		QMessageBox msgBox;
+		QString msg = "Process ht-caen is still running \nVerify " + line + "\nor delete /var/lock/ht-caen";
+		msgBox.setText(msg);
+		msgBox.exec();
+		file.close();
+	}
+
 	
     myProcess = new QProcess(this);
     if ((OnStartMonitor) && (myProcess->state() == QProcess::NotRunning)) {
@@ -135,6 +154,7 @@ MainWindow::MainWindow(QWidget *parent) :
 //=================================================
 MainWindow::~MainWindow()
 {
+	QFile::remove("/var/lock/ht-caen");
     QProcess kill;
     kill.start("kill " + QString::number(myProcess->processId()));
 	delete ui;

@@ -5,6 +5,6 @@
  * These values are automatically set according to their cmake variables.
  */
 #define __DCS_VERSION_STRING__ "1.0.002"
-#define __GITVER__  "1c480c6"
+#define __GITVER__  "f0d8233"
 
 #endif /* EXAMPLE_H */
