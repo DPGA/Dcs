@@ -13,6 +13,7 @@
 #include "dial_about.h"
 #include "ui_dial_about.h"
 #include "Version.h"
+#include <QDate>
 
 //===============================================
 Dial_About::Dial_About(QWidget *parent) :
@@ -25,7 +26,8 @@ Dial_About::Dial_About(QWidget *parent) :
 
     ui->Version->setStyleSheet("QLabel { background-color : red; color : blue; } ");
 //	ui->label_Version->setText(" Experimental Version : 2.00");
-    ui->Version->setText("Version DCS " + QString(__DCS_VERSION_STRING__)+ "  Git " + QString(__GITVER__) + "\n" + QString(__DATE__) +"\t" + QString(__TIME__));
+    ui->Version->setText("Version DCS " + QString(__DCS_VERSION_STRING__)+ "  Git " + QString(__GITVER__) + "\n" + 
+		QString(__DATE__) + " " + QString(__TIME__));
 	QPixmap image (":images/catfootprint.png");
 	ui->label_img->setPixmap(image);
 }
