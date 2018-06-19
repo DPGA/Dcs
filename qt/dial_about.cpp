@@ -12,7 +12,7 @@
 #include <QPixmap>
 #include "dial_about.h"
 #include "ui_dial_about.h"
-#include "version.h"
+#include "Version.h"
 
 //===============================================
 Dial_About::Dial_About(QWidget *parent) :
