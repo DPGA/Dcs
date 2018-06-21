@@ -22,6 +22,8 @@ dial_1Asm::dial_1Asm(CAsm *asmm, CHvClient *hv,u32 use, u16 *frontend,QString pa
     m_chan = frontend[use];
     m_mask = 1 << use;
     p_asm->SetMsgBox(ui->AsmConsole);
+    ui->SaveTest->setChecked(false);
+    ui->SaveFile->setChecked(false);
     ui->RunNb->setEnabled(ui->SaveFile->isChecked());
     ui->labelRunNb->setEnabled(ui->SaveFile->isChecked());
     Path= path;
@@ -250,7 +252,7 @@ void dial_1Asm::writerXml(QString dir)
 void dial_1Asm::on_AsmStart_clicked()
 {
     int ret;
-    QString FileRecord;
+    QString FileRecord ="";
     QDir dir(Path);
 
     if (ui->SaveFile->isChecked()) {
@@ -286,8 +288,8 @@ void dial_1Asm::on_AsmStart_clicked()
 
     }
     QString strtemp = Path + "/" + FileRecord;
-
-    ipcSend(IPCRECORD,strtemp.toStdString().c_str());
+	 if (!FileRecord.isEmpty()) ipcSend(IPCRECORD,strtemp.toStdString().c_str());
+    else ipcSend(IPCWITHOUTFILE,"");
     ipcSend(IPCDAQ,ui->MonitoringValue->value());
 
     ASMDATA *AsmData = p_asm->GetData(m_use);
