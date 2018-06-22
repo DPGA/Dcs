@@ -518,9 +518,9 @@ void Dial_calib::ReadFrequency()
     int ret;
     u16 reg[9];
     p_asm->Message(ret=p_asm->ReadCmd(m_mask, getFrontEnd(m_chan), 9, 0x16, &reg[0]),"Read Value 0x" + QString::number(reg[0],16));
-    long int freq = reg[0] << 32 |reg[1] << 16 | reg[2];
-    long int freq1 = reg[3] << 32 |reg[4] << 16 | reg[5];
-    long int freq2 = reg[6] << 32 |reg[7] << 16 | reg[8];
+    long int freq  = (long int) (reg[0]) << 32 |reg[1] << 16 | reg[2];
+    long int freq1 = (long int) (reg[3]) << 32 |reg[4] << 16 | reg[5];
+    long int freq2 = (long int) (reg[6]) << 32 |reg[7] << 16 | reg[8];
 
     double val  = (double) freq /10.0;
     double val1 = (double) freq1 /10.0;
