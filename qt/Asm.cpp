@@ -62,20 +62,20 @@ void CAsm::setConsole(QTextEdit *console)
 //==========================================================================
 //==========================================================================
 {
-    m_console = console;
+    //m_console = console;
 }
 
 void CAsm::Message(int ret,QString message,const QString endmessage)
 //==========================================================================
 //==========================================================================
 {
-    if (m_console) {
+    if (p_mbox) {
         if(ret == NO_ERROR) {
-            m_console->setTextColor("green");
-            m_console->append(message + " => Operation Successfull  " + endmessage);
+            p_mbox->setTextColor("green");
+            p_mbox->append(message + " => Operation Successfull  " + endmessage);
         } else {
-            m_console->setTextColor("red");
-            m_console->append(message + " => failed " + endmessage + "Ret = " + QString::number(ret,10));
+            p_mbox->setTextColor("red");
+            p_mbox->append(message + " => failed " + endmessage + "Ret = " + QString::number(ret,10));
         }
     }
 }
@@ -824,6 +824,103 @@ int CAsm::ConfigCdce62005(u32 Mask, u16 FrontEnd, u16 addrReg,u16 mchannel, cons
    return(ret);
 }
 
+/*
+//=========================================================================
+//=========================================================================
+int CAsm::ConfigCmdok(u32 Mask, u16 FrontEnd, QString f_name, bool DoIt)
+{
+	u32 nbtry;
+
+	QString title = QString("ASM Config Command");
+
+	if((Mask < 1) || (Mask>0xfff))
+	{
+		m_str = (QString("Asm Config Command Wrong Asm Number (0x")) + QString::number(Mask,16) + (QString(")"));
+		WriteMsg(m_str,"red");
+//		TimerMessage(title, m_str);
+		if(m_verbose) cerr << FgColor::red << m_str.toStdString() << FgColor::white << endl;
+		return(BAD_ASM_NB);
+	}
+	if(SingleMask(Mask))
+	{
+		m_str = QString("Asm Config Command Invalid for Multi Channel Mode");
+		WriteMsg(m_str,"red");
+//		TimerMessage( title, m_str);
+		if(m_verbose) cerr << FgColor::red << m_str.toStdString() << FgColor::white << endl;
+		return(BAD_ASM_NB);
+	}
+
+	if(f_name.isEmpty()) {
+		char * dirdcs = getenv("DIR_DCS");
+		if(dirdcs) {
+			f_name = QString("%1/ConfigDcs/RegAsm_%2.xml").arg(dirdcs).arg(m_channel);
+		} else {
+#ifdef Q_OS_OSX
+			f_name =  QString("../../../../config/RegAsm_%1.xml").arg(m_channel);
+#else
+			f_name =  QString("../../ConfigDcs/RegAsm_%1.xml").arg(m_channel);
+#endif
+		}
+	}
+
+	if(m_verbose) {
+		cout << "f_name " << f_name.toStdString() << endl;
+		cout << CtColor::underscore << CtColor::reverse << FgColor::blue
+			 << "Asm ConfigCmd : FrontEnd (0x" << hex << FrontEnd << dec << ")  Channel (" << m_channel << ") : " << f_name.toStdString()
+			 << FgColor::white << CtColor::none << endl;
+	}
+	int ret = ParseXmlReg(m_channel, f_name);
+	if (ret == NO_ERROR) { //XML_SUCCESS) {
+		DisplayReadWrite(m_channel);
+		ret = p_tcp->Connect();
+		if(ret == NO_ERROR) {
+			ret = WriteCmd(Mask, FrontEnd, sizeof(asmdt[m_channel].rw) /2, m_address, &(asmdt[m_channel].rw.FrontEnd), true);
+			if(ret == NO_ERROR) {
+				if(DoIt) {
+//					for(int i=0; i<=ResetFifo240M; i++) {
+                    for (int j=0;j<8;j++) ConfigCdce62005(Mask,FrontEnd, j,m_channel,true);
+                    for(int i=InitCm1; i<=InitDrs; i++) {   //Ajout calibrartion adc
+ //                     if (i != ResetDrs) {
+						nbtry = 0;
+						do {
+							cout << FgColor::yellow << i << " Command Config  0x" << hex << conf[i] << dec << FgColor::white <<endl;
+							ret = WriteCmd(Mask, FrontEnd, 2, m_cfg_addr, (u16 *) &conf[i], true);
+							if(ret != NO_ERROR) {
+								nbtry++;
+								if( nbtry >=3) {
+									p_tcp->Disconnect();
+									return (ret);
+								}
+							}
+						} while (ret != NO_ERROR);
+						nbtry = 0;
+						do {
+							ret = ChangCmd(Mask, FrontEnd, true);
+							if(ret != NO_ERROR) {
+								nbtry++;
+								if( nbtry >=3) {
+									p_tcp->Disconnect();
+									return (ret);
+								}
+							}
+						} while (ret != NO_ERROR);
+//					}
+                  }
+
+				}
+				if((ret == NO_ERROR) && (m_verbose))
+					cout << FgColor::green << "Command executed" << FgColor::white << endl;
+			}
+		}
+		p_tcp->Disconnect();
+	}
+	return (ret);
+
+}	// Config
+
+*/
+
+
 //=========================================================================
 //=========================================================================
 int CAsm::ConfigCmd(u32 Mask, u16 FrontEnd, QString f_name, bool DoIt)
@@ -871,46 +968,28 @@ int CAsm::ConfigCmd(u32 Mask, u16 FrontEnd, QString f_name, bool DoIt)
 	int ret = ParseXmlReg(m_channel, f_name);
 	if (ret == NO_ERROR) { //XML_SUCCESS) {
 		DisplayReadWrite(m_channel);
-//		cout << "Asm Configuration" << endl;
 		ret = p_tcp->Connect();
 		if(ret == NO_ERROR) {
 			ret = WriteCmd(Mask, FrontEnd, sizeof(asmdt[m_channel].rw) /2, m_address, &(asmdt[m_channel].rw.FrontEnd), true);
-//			cout <<  "Config WriteCmd Ret " << ret << endl << endl;
 			if(ret == NO_ERROR) {
 				if(DoIt) {
-//					for(int i=0; i<=ResetFifo240M; i++) {
-                    for (int j=0;j<8;j++) ConfigCdce62005(Mask,FrontEnd, j,m_channel,true);
-                    for(int i=InitCm1; i<=InitDrs; i++) {   //Ajout calibrartion adc
- //                     if (i != ResetDrs) {
-						nbtry = 0;
-						do {
-							cout << FgColor::yellow << i << " Command Config  0x" << hex << conf[i] << dec << FgColor::white <<endl;
-							ret = WriteCmd(Mask, FrontEnd, 2, m_cfg_addr/*ASM_CONF_STROBE_ADDR*/ , (u16 *) &conf[i], true);
-							if(ret != NO_ERROR) {
-								nbtry++;
-								if( nbtry >=3) {
-									p_tcp->Disconnect();
-									return (ret);
-								}
+// Configuration Registre CDCE62005 Cleaner Jitter					
+              for (int j=0;j<8;j++) ConfigCdce62005(Mask,FrontEnd, j,m_channel,true);
+// Config carte ASM              
+              for(int i=InitCm1; i<=InitDrs; i++) {
+						cout << FgColor::yellow << i << " Command Config  0x" << hex << conf[i] << dec << FgColor::white <<endl;
+						Message(CalibCmd(Mask,FrontEnd,i),"");
+						if(ret != NO_ERROR) {
+							nbtry++;
+							if( nbtry >=3) {
+								p_tcp->Disconnect();
+								return (ret);
 							}
-						} while (ret != NO_ERROR);
-						nbtry = 0;
-						do {
-							ret = ChangCmd(Mask, FrontEnd, true);
-							if(ret != NO_ERROR) {
-								nbtry++;
-								if( nbtry >=3) {
-									p_tcp->Disconnect();
-									return (ret);
-								}
-							}
-						} while (ret != NO_ERROR);
-//					}
-                  }
-
+						}
+					}
+					Message(CalibCmd(Mask,FrontEnd,INITCFGDRS),"");
 				}
-				if((ret == NO_ERROR) && (m_verbose))
-					cout << FgColor::green << "Command executed" << FgColor::white << endl;
+				if((ret == NO_ERROR) && (m_verbose))	cout << FgColor::green << "Command executed" << FgColor::white << endl;
 			}
 		}
 		p_tcp->Disconnect();
@@ -927,7 +1006,8 @@ int CAsm::CalibCmd(u32 Mask, u16 FrontEnd,uint8_t TypeCalib)
 {
 	qInfo() << "Calibcmd***********************";
 //	int Typecal=0;
-	int ret = p_tcp->Connect();
+	int ret = NO_ERROR;
+	if (!p_tcp->IsConnected()) ret = p_tcp->Connect();
 	if(ret == NO_ERROR) {
 		qInfo() << "Calibcmd*****tcp connected ******************";
 
@@ -957,8 +1037,9 @@ int CAsm::CalibCmd(u32 Mask, u16 FrontEnd,uint8_t TypeCalib)
 	}
 	if((ret == NO_ERROR) && (m_verbose))
 		cout << FgColor::green << "Command executed" << FgColor::white << endl;
-	p_tcp->Disconnect();
-    return(ret);
+	cout << FgColor::green << "Command executed" << FgColor::white << endl;	
+	//p_tcp->Disconnect();
+   return(ret);
 	
 }
 

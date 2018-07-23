@@ -90,6 +90,8 @@ private slots:
 
     void on_delayTrigthor_valueChanged(int arg1);
 
+    void on_AsmModeThor_clicked();
+
 private:
     Ui::Dial_AllDaq *ui;
     CAmc * p_amc;

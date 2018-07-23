@@ -30,6 +30,7 @@ Dial_calib::Dial_calib(CAmc *amc, CAsm* asmm, CThor *thor, u32 use, u16 *fronten
     setup();
     m_send = true;
     ui->CalculFreqBar->hide();
+    nbstep = 0;
 
 
 }
@@ -170,6 +171,7 @@ Dial_calib::~Dial_calib()
 //===============================================
 {
     p_asm->SetMsgBox(NULL);
+    p_asm->setConsole(NULL);
     delete ui;
 //    if (Monitor) Monitor->setWindowModality(Qt::WindowModal);
 }
@@ -322,9 +324,10 @@ void Dial_calib::on_PhaseAdc_clicked()
 {
     for (int i=0;i < ui->NbStep->value();++i)
         p_asm->Message(p_asm->CalibCmd(m_mask,getFrontEnd(m_chan),PhaseClkAdc),"PhaseAdc"); //Phasee adc Pll FPGA
-
-    Run1sec();
-    decodeStatus();
+    nbstep += ui->NbStep->value();
+	 ui->textEdit_Msg->append(QString::number(nbstep,10));
+ //   Run1sec();
+ //   decodeStatus();
 }
 
 
@@ -522,20 +525,20 @@ void Dial_calib::ReadFrequency()
     long int freq1 = (long int) (reg[3]) << 32 |reg[4] << 16 | reg[5];
     long int freq2 = (long int) (reg[6]) << 32 |reg[7] << 16 | reg[8];
 
-    double val  = (double) freq /10.0;
-    double val1 = (double) freq1 /10.0;
-    double val2 = (double) freq2;///10.0;
+    double val  = (double) freq  / 10.0;
+    double val1 = (double) freq1 / 10.0;
+    double val2 = (double) freq2 / 10.0;
 
     ui->ValFreq->display((val <10 ? "0" : "") + QString().setNum(val, 'f', 2)); //display((double)(freq/10));
-    if (fabs(val - 20.0) > 0.5) ui->ValFreq->setPalette(Qt::red);
+    if (fabs(val - 30.0) > 0.5) ui->ValFreq->setPalette(Qt::red);
     else ui->ValFreq->setPalette(Qt::green);
 
     ui->ValFreq_2->display((val1 <10 ? "0" : "") + QString().setNum(val1, 'f', 2)); //display((double)(freq/10));
-    if (fabs(val - 20.0) > 0.5) ui->ValFreq_2->setPalette(Qt::red);
+    if (fabs(val - 30.0) > 0.5) ui->ValFreq_2->setPalette(Qt::red);
     else ui->ValFreq_2->setPalette(Qt::green);
 
     ui->ValFreq_3->display((val2 <10 ? "0" : "") + QString().setNum(val2, 'f', 2)); //display((double)(freq/10));
-    if (fabs(val - 20.0) > 0.5) ui->ValFreq_3->setPalette(Qt::red);
+    if (fabs(val - 30.0) > 0.5) ui->ValFreq_3->setPalette(Qt::red);
     else ui->ValFreq_3->setPalette(Qt::green);
 
 

@@ -99,6 +99,7 @@ private:
     monitoring *Monitor;
     double Mean[24];
     double Stdev[24];
+    int nbstep;
 };
 
 #endif // DIAL_CALIB_H

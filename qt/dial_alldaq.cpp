@@ -68,6 +68,13 @@ Dial_AllDaq::Dial_AllDaq(CAmc *amc, CAsm* asmm, CThor *thor, u32 mask, u16 seq, 
     for (int i=0;i<NB_ASM;++i) ColorCheck(i,true,true);
 	tip();
 	display();
+    p_asmdt = p_asm->GetData(0);
+    ui->NbSamples->setValue(p_asmdt->rw.NbSamples);
+    ui->EnableRoi->setChecked((bool) (p_asmdt->rw.RegSpare3 & 0x100));
+    bool Mode;
+    if (p_asmdt->rw.Mode == 14) Mode = false; else Mode = true;
+    ui->AsmModeThor->setChecked(Mode);
+
     p_thordt = p_thor->GetData();
     ui->ModeDaqThor->setCurrentIndex(p_thordt->rw.Trigger_Type & 0x0007);
     ui->FreqPiedThor->setValue(p_thordt->rw.PreTrig_PedFreq);
@@ -420,6 +427,7 @@ void Dial_AllDaq::on_pushButton_Stop_clicked()
     int ret[3] = {0,0,0};
     const u32 run = 0;
     u64 tmp = ComputeMask(m_usemask,p_thordt->rw.PreTrig_Mask);
+
     m_color = ui->textEdit_Msg->textColor();
     ui->textEdit_Msg->clear();
     if(ui->checkBox_Thor->isChecked()) {
@@ -497,12 +505,24 @@ void Dial_AllDaq::on_pushButton_Start_clicked()
 {
     //*******************************
 
-	 ipcSend(IPCDAQ,1000);
+    ipcSend(IPCDAQ,1000);
     int ret[3] = {0,0,0};
     u32 run = 1;
-    u64 tmp = ComputeMask(m_usemask,p_thordt->rw.PreTrig_Mask);
+    u32 mask = m_usemask & 0xfff;
+    qDebug() << "mask = " << mask;
+    u64 tmp = ComputeMask(mask,p_thordt->rw.PreTrig_Mask);
     m_color = ui->textEdit_Msg->textColor();
     ui->textEdit_Msg->clear();
+
+    u16 Mode = 0xe;
+    u16 Roi  = 0xff;
+    if (ui->AsmModeThor->isChecked()) Mode = 0x0;
+    if (ui->EnableRoi->isChecked()) Roi = 0x1ff;
+    p_asm->Message(p_asm->WriteCmd(mask, BROADCAST_FE, 1, 0x93 , (u16 *) &Roi),"Select Mode Roi ");
+    p_asm->Message(p_asm->WriteCmd(mask, BROADCAST_FE, 1, 0x21 , (u16 *) &Mode),"Select Mode Daq ");
+    u16 temp = ui->NbSamples->value();
+    p_asm->Message(p_asm->WriteCmd(mask, BROADCAST_FE, 1, 0x84 , (u16 *) &temp),"Select Nb Samples ");
+
     if(ui->checkBox_Thor->isChecked()) {
 		 cout << "Mask Addr 0x" << hex  << p_thor->GetMaskAddr() << "\tUse 0x"<< m_usemask << "\tPretrigMask 0x" << p_thordt->rw.PreTrig_Mask << "\tMask 0x" << hex << tmp << dec << endl;
  //       p_thor-> WriteCmd(BROADCAST_FE,1,p_thor->GetMaskAddr(),&(p_thordt->rw.PreTrig_Mask));
@@ -632,4 +652,11 @@ void Dial_AllDaq::on_delayTrigthor_valueChanged(int arg1)
 {
     double delay = (double) (arg1 *6.66);
     ui->Label_DelayCalcul->setText(QString::number(delay)+ "  ns");
+}
+
+void Dial_AllDaq::on_AsmModeThor_clicked()
+{
+    if (ui->AsmModeThor->isChecked()) {
+
+    }
 }

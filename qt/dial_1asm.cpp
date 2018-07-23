@@ -29,20 +29,22 @@ dial_1Asm::dial_1Asm(CAsm *asmm, CHvClient *hv,u32 use, u16 *frontend,QString pa
     Path= path;
     Refresh();
 
-
     char *dirdcs = getenv("DIR_DCS");
     if(dirdcs) m_filename = QString("%1/ConfigDcs/RegAsm_%2.xml").arg(dirdcs).arg(m_use);
     else       m_filename = "../../ConfigDcs/RegAsm_" + QString::number(m_chan) + ".xml";
     ui->AsmFileName->setText(m_filename);
-    double freq = (1/(double) (ui->AsmFreqPied->value()*32)*1000);
-    ui->labelFreq->setText(QString::number(freq,'f',4)+ " KHz");
-    if (ui->AsmModeDaq->currentIndex() == 7) {
-        ui->AsmFreqPied->setEnabled(true);
-        ui->Label_AsmfreqPied->setEnabled(true);
-    } else {
-        ui->AsmFreqPied->setEnabled(false);
-        ui->Label_AsmfreqPied->setEnabled(false);
+    
+
+
+    ASMDATA *AsmData = p_asm->GetData(m_use);
+    double step=0.0;
+    for (int i=0;i<32;i++) {
+      ui->PhaseDrsAdc->addItem(QString::number(step,'f',1));
+      step += 11.25;
+      if (t_phase[i] == ((AsmData->rw.Jitter_Clean[4] & 0x0001FC00) >> 10)) ui->PhaseDrsAdc->setCurrentIndex(i);
     }
+
+
 }
 
 void dial_1Asm::Refresh()
@@ -56,6 +58,17 @@ void dial_1Asm::Refresh()
     ui->AsmModeDaq->setCurrentIndex((AsmData->rw.Mode & 0xE) >> 1);
     ui->AsmFreqPied->setValue(AsmData->rw.FreqPied);
     ui->AsmdelayTrig->setValue(AsmData->rw.Blonde_Offset);
+    ui->cfgRegDrs->setValue(AsmData->rw.RegSpare3);
+    double freq = (1/(double) (ui->AsmFreqPied->value()*32)*1000);
+    ui->labelFreq->setText(QString::number(freq,'f',4)+ " KHz");
+    if (ui->AsmModeDaq->currentIndex() == 7) {
+        ui->AsmFreqPied->setEnabled(true);
+        ui->Label_AsmfreqPied->setEnabled(true);
+    } else {
+        ui->AsmFreqPied->setEnabled(false);
+        ui->Label_AsmfreqPied->setEnabled(false);
+    }
+    
     decodeStatus();
 }
 
@@ -254,7 +267,7 @@ void dial_1Asm::on_AsmStart_clicked()
     int ret;
     QString FileRecord ="";
     QDir dir(Path);
-
+    p_asm->setConsole(ui->AsmConsole);
     if (ui->SaveFile->isChecked()) {
         QDate mDate(QDate::currentDate());
         QString date = mDate.toString("MMddyy");
@@ -297,7 +310,7 @@ void dial_1Asm::on_AsmStart_clicked()
     u16 temp = (ui->Mezza2->checkState() << 5) | (ui->Mezza1->checkState() << 4) | (ui->Mezza0->checkState() << 3);
     AsmData->rw.RegSpare2 |= temp;
     p_asm->Message(ret=p_asm->WriteCmd(m_mask, m_chan, 1, 0x92 , (u16 *) &AsmData->rw.RegSpare2),"Actived Mezzanine " + QString::number(AsmData->rw.RegSpare2,16));
-    p_asm->Dump(m_use);
+    p_asm->Dump(m_mask);
     writerXml(strtemp);
     int loop=0;
     do {
@@ -358,4 +371,34 @@ void dial_1Asm::on_Hv_clicked()
     Dial_HvONOff dl(p_hv);
     dl.setModal(true);
     dl.exec();
+}
+
+void dial_1Asm::on_NbSamples_editingFinished()
+{
+    int ret;
+    u16 tmp = ui->NbSamples->value();
+    p_asm->Message(ret=p_asm->WriteCmd(m_mask, m_chan, 1, 0x84 , (u16 *) &tmp),"Nb Samples " + QString::number(ui->NbSamples->value()));
+}
+
+void dial_1Asm::on_PhaseDrsAdc_activated(int index)
+{
+     ASMDATA *AsmData = p_asm->GetData(m_use);
+     uint32_t Phase = t_phase[index] <<10;
+     AsmData->rw.Jitter_Clean[3] &= 0xFFFE03ff;
+     AsmData->rw.Jitter_Clean[3] |= Phase;
+
+     p_asm->Message(p_asm->WriteCmd(m_mask, m_chan, 2, 0x72 , (u16 *) &AsmData->rw.Jitter_Clean[3]),"Shift Clock DRS-ADC");
+     p_asm->Message(p_asm->ConfigCdce62005(m_mask,m_chan,4,false),"Config CDCE62005");
+     p_asm->Message(p_asm->CalibCmd(m_mask,m_chan,SYNCCDCE),"Sync Cdce 62005");
+
+}
+
+void dial_1Asm::on_cfgRegDrs_editingFinished()
+{
+    ASMDATA *AsmData = p_asm->GetData(m_use);
+    AsmData->rw.RegSpare3 = ui->cfgRegDrs->value();
+
+    p_asm->Message(p_asm->WriteCmd(m_mask, m_chan, 2, 0x93 , (u16 *) &AsmData->rw.RegSpare3),"Reg Cfg Drs");
+    p_asm->Message(p_asm->CalibCmd(m_mask,m_chan,INITCFGDRS),"Init Cfg Drs");
+
 }
