@@ -749,6 +749,35 @@
     <string>NbSamples</string>
    </property>
   </widget>
+  <widget class="QSpinBox" name="MonitoringValue">
+   <property name="geometry">
+    <rect>
+     <x>700</x>
+     <y>120</y>
+     <width>71</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="maximum">
+    <number>1000000</number>
+   </property>
+   <property name="value">
+    <number>1000</number>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
+    <rect>
+     <x>700</x>
+     <y>50</y>
+     <width>91</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Monitoring&lt;/p&gt;&lt;p&gt;Refresh&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+  </widget>
   <zorder>groupBox_4</zorder>
   <zorder>groupBox_5</zorder>
   <zorder>widget_2</zorder>
@@ -794,6 +823,8 @@
   <zorder>EnableRoi</zorder>
   <zorder>NbSamples</zorder>
   <zorder>Label_delay_trig_2</zorder>
+  <zorder>MonitoringValue</zorder>
+  <zorder>label_3</zorder>
  </widget>
  <resources/>
  <connections/>

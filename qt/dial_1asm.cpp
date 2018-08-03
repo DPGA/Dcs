@@ -54,12 +54,12 @@ void dial_1Asm::Refresh()
     ASMDATA *AsmData = p_asm->GetData(m_use);
 
     if ((AsmData->rw.Mode & 0xFFFE) == 1) ui->AsmchoiceLogic->setChecked(true);
-
+    ui->NbSamples->setValue(AsmData->rw.NbSamples);
     ui->AsmModeDaq->setCurrentIndex((AsmData->rw.Mode & 0xE) >> 1);
     ui->AsmFreqPied->setValue(AsmData->rw.FreqPied);
     ui->AsmdelayTrig->setValue(AsmData->rw.Blonde_Offset);
     ui->cfgRegDrs->setValue(AsmData->rw.RegSpare3);
-    double freq = (1/(double) (ui->AsmFreqPied->value()*32)*1000);
+    double freq = (1/(double) (ui->AsmFreqPied->value()*16)*1000);;
     ui->labelFreq->setText(QString::number(freq,'f',4)+ " KHz");
     if (ui->AsmModeDaq->currentIndex() == 7) {
         ui->AsmFreqPied->setEnabled(true);
@@ -76,7 +76,9 @@ void dial_1Asm::Refresh()
 void dial_1Asm::decodeStatus()
 {
     p_asm->decodeStatus(ui->Asmstatus,ui->AsmstatusPll,m_mask,m_chan,true);
-    if(ui->Asmstatus->text().toInt() & (1 << 31)) ui->AsmstatusDaq->setText("Started"); else ui->AsmstatusDaq->setText("Stopped");
+    bool bStatus;
+    u32 status = ui->Asmstatus->text().toUInt(&bStatus,16);
+    if(status & (1 << 31)) ui->AsmstatusDaq->setText("Started"); else ui->AsmstatusDaq->setText("Stopped");
 }
 
 dial_1Asm::~dial_1Asm()
@@ -375,8 +377,10 @@ void dial_1Asm::on_Hv_clicked()
 
 void dial_1Asm::on_NbSamples_editingFinished()
 {
-    int ret;
+    ASMDATA *AsmData = p_asm->GetData(m_use);
     u16 tmp = ui->NbSamples->value();
+    AsmData->rw.NbSamples = tmp;
+    int ret;
     p_asm->Message(ret=p_asm->WriteCmd(m_mask, m_chan, 1, 0x84 , (u16 *) &tmp),"Nb Samples " + QString::number(ui->NbSamples->value()));
 }
 

@@ -505,7 +505,7 @@ void Dial_AllDaq::on_pushButton_Start_clicked()
 {
     //*******************************
 
-    ipcSend(IPCDAQ,1000);
+    ipcSend(IPCDAQ,ui->MonitoringValue->value());
     int ret[3] = {0,0,0};
     u32 run = 1;
     u32 mask = m_usemask & 0xfff;
@@ -659,4 +659,9 @@ void Dial_AllDaq::on_AsmModeThor_clicked()
     if (ui->AsmModeThor->isChecked()) {
 
     }
+}
+
+void Dial_AllDaq::on_MonitoringValue_editingFinished()
+{
+    ipcSend(IPCINTERVAL,ui->MonitoringValue->value());
 }

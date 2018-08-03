@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="AmcTab">
      <attribute name="title">
@@ -6487,6 +6487,93 @@
         <string>Daq</string>
        </property>
       </widget>
+      <widget class="QLineEdit" name="BusyInLevel">
+       <property name="geometry">
+        <rect>
+         <x>230</x>
+         <y>200</y>
+         <width>121</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Nav</string>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="TriggerInLevel">
+       <property name="geometry">
+        <rect>
+         <x>230</x>
+         <y>240</y>
+         <width>121</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Nav</string>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="InLvdsLevel">
+       <property name="geometry">
+        <rect>
+         <x>230</x>
+         <y>280</y>
+         <width>121</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Nav</string>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_132">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>200</y>
+         <width>121</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>BusyIn Level</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_133">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>240</y>
+         <width>121</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>TriggerIn Level</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_134">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>280</y>
+         <width>72</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>In Lvds</string>
+       </property>
+      </widget>
       <zorder>groupBox_42</zorder>
       <zorder>groupBox_30</zorder>
       <zorder>groupBox_29</zorder>
@@ -6514,6 +6601,12 @@
       <zorder>checkBox_ThorTab_St_7</zorder>
       <zorder>checkBox_ThorTab_St_8</zorder>
       <zorder>checkBox_ThorTab_St_0</zorder>
+      <zorder>BusyInLevel</zorder>
+      <zorder>TriggerInLevel</zorder>
+      <zorder>InLvdsLevel</zorder>
+      <zorder>label_132</zorder>
+      <zorder>label_133</zorder>
+      <zorder>label_134</zorder>
      </widget>
      <widget class="QGroupBox" name="groupBox_22">
       <property name="geometry">
@@ -9395,7 +9488,7 @@
   </action>
   <action name="actionMonitoring">
    <property name="text">
-    <string>Monitoring</string>
+    <string>&amp;Monitoring</string>
    </property>
   </action>
  </widget>

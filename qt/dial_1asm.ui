@@ -114,7 +114,7 @@
      <rect>
       <x>20</x>
       <y>130</y>
-      <width>71</width>
+      <width>81</width>
       <height>21</height>
      </rect>
     </property>
@@ -137,7 +137,7 @@
      <rect>
       <x>20</x>
       <y>90</y>
-      <width>71</width>
+      <width>91</width>
       <height>21</height>
      </rect>
     </property>
@@ -270,6 +270,9 @@
      <height>211</height>
     </rect>
    </property>
+   <property name="toolTip">
+    <string extracomment="Nb trigger to Refresh monitoring "/>
+   </property>
   </widget>
   <widget class="QLabel" name="AsmFileName">
    <property name="geometry">
@@ -358,6 +361,12 @@
      <height>23</height>
     </rect>
    </property>
+   <property name="toolTip">
+    <string extracomment="Nb trigger to Refresh monitoring "/>
+   </property>
+   <property name="statusTip">
+    <string extracomment="Nb trigger to Refresh monitoring "/>
+   </property>
    <property name="maximum">
     <number>1000000</number>
    </property>
@@ -369,8 +378,8 @@
    <property name="geometry">
     <rect>
      <x>570</x>
-     <y>230</y>
-     <width>91</width>
+     <y>240</y>
+     <width>101</width>
      <height>61</height>
     </rect>
    </property>

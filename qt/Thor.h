@@ -79,6 +79,9 @@ struct THORREAD_WRITE
     u16 PreTrig_PedFreq;
     u16 Trig_Shape;
     u16 Trig_Retardment;
+    u32 BusyInLevel;
+    u32 TriggerInLevel;
+    u32 InLvdsLevel;
 }__attribute__((__packed__));
 //====================================================================
 //====================================================================

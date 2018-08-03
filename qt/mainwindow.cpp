@@ -769,6 +769,7 @@ void MainWindow::AsmDisplay(u32 Channel)
 	switch(p_asmdt->rw.Mode) {
 		case 0  : str = "0_Raw"; break;
 		case 1  : str = "1_Normal"; break;
+        case 14 : str = "14_Mode Pied ASM";break;
 		default : str = QString::number(p_asmdt->rw.Mode) + "_Unknow";
 	}
 	ui->lineEdit_AsmTab_Mode->setText(str);
@@ -928,6 +929,10 @@ void MainWindow::ThorDisplay(void)
 	ui->lineEdit_ThorTab_PTrigFreq->setText(QString::number(p_thordt->rw.PreTrig_PedFreq));
 	ui->lineEdit_ThorTab_TrigShape->setText(QString::number(p_thordt->rw.Trig_Shape));
 	ui->lineEdit_ThorTab_TrigDelay->setText(QString::number(p_thordt->rw.Trig_Retardment));
+
+    ui->BusyInLevel->setText(QString("0x%1").arg(p_thordt->rw.BusyInLevel,8,16,QChar('0')));
+    ui->TriggerInLevel->setText(QString("0x%1").arg(p_thordt->rw.TriggerInLevel,8,16,QChar('0')));
+    ui->InLvdsLevel->setText(QString("0x%1").arg(p_thordt->rw.InLvdsLevel,8,16,QChar('0')));
 
 	state = (p_thordt->rd.Global_Status & 0x0001) ? (Qt::Checked) : (Qt::Unchecked); ui->checkBox_ThorTab_St_0->setCheckState(state);
 	state = (p_thordt->rd.Global_Status & 0x0002) ? (Qt::Checked) : (Qt::Unchecked); ui->checkBox_ThorTab_St_1->setCheckState(state);
@@ -1105,6 +1110,7 @@ void MainWindow::MiscDisplay(void)
 	switch(m_mode) {
 		case 0  : str = "0_Raw"; break;
 		case 1  : str = "1_Normal"; break;
+        case 14 : str = "14_Mode Pied ASM";
 		default : str = QString::number(m_mode) + "_Unknow";
 	}
 	ui->lineEdit_Mode_MiscTab->setText(str);

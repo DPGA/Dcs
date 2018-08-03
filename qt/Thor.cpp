@@ -660,10 +660,13 @@ int CThor::ParseXmlReg(QString f_name)
           else if(child.attribute("TITLE") == "PreTrig_Mask")
               thordt.rw.PreTrig_Mask = child.attribute("VALUE").toULongLong(&ret,16);
 		  else if(child.attribute("TITLE") == "PreTrig_PedFreq")   thordt.rw.PreTrig_PedFreq = child.attribute("VALUE").toUInt(&ret,16);
-		  else if(child.attribute("TITLE") == "Trig_Shape")        thordt.rw.Trig_Shape = child.attribute("VALUE").toUInt(&ret,16);
+          else if(child.attribute("TITLE") == "Trig_Shape")        thordt.rw.Trig_Shape      = child.attribute("VALUE").toUInt(&ret,16);
 		  else if(child.attribute("TITLE") == "Trig_Delay")        thordt.rw.Trig_Retardment = child.attribute("VALUE").toUInt(&ret,16);
+          else if(child.attribute("TITLE") == "BusyInLevel")       thordt.rw.BusyInLevel     = child.attribute("VALUE").toUInt(&ret,16);
+          else if(child.attribute("TITLE") == "TriggerInLevel")    thordt.rw.TriggerInLevel  = child.attribute("VALUE").toUInt(&ret,16);
+          else if(child.attribute("TITLE") == "InLvdsLevel")       thordt.rw.InLvdsLevel     = child.attribute("VALUE").toUInt(&ret,16);
 
-		  child = child.nextSiblingElement();
+          child = child.nextSiblingElement();
 	   }
 	} else {
 		m_str = QString("Error while Parsing File : ") + f_name + (QString(" (errno=%1) %2").arg(errno).arg(strerror(errno)));

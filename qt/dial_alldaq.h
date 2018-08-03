@@ -92,6 +92,8 @@ private slots:
 
     void on_AsmModeThor_clicked();
 
+    void on_MonitoringValue_editingFinished();
+
 private:
     Ui::Dial_AllDaq *ui;
     CAmc * p_amc;
