@@ -144,10 +144,14 @@ MainWindow::MainWindow(QWidget *parent) :
 
 	
     myProcess = new QProcess(this);
+    qDebug() << PathMonitor << myProcess->state();
     if ((OnStartMonitor) && (myProcess->state() == QProcess::NotRunning)) {
-        QStringList arguments;
-        myProcess->start(PathMonitor, arguments);
+
+        QStringList arguments;// = PathMonitor.split(QRegExp("\\s+"), QString::SkipEmptyParts);
+        myProcess->start( PathMonitor, arguments);
+        qDebug() << "info " << myProcess->readAll();
     }
+    qDebug() << PathMonitor << myProcess->state();
 }   // MainWindow
 
 //=================================================
