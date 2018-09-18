@@ -51,6 +51,8 @@ private slots:
 
     void on_cfgRegDrs_editingFinished();
 
+    void on_ResetDrs_clicked();
+
 private:
     Ui::dial_1Asm *ui;
     void decodeStatus();

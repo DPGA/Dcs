@@ -1786,3 +1786,4 @@ void MainWindow::on_actionMonitoring_triggered()
         qDebug() << myProcess->program() << "State <= " << myProcess->state();
     }
 }
+

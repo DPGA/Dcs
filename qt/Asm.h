@@ -33,7 +33,7 @@
 #define InitT1					(8)
 #define InitT2					(9)
 #define InitT3					(10)
-#define ResetDrs    			(11)
+#define RESETDrs    			(11)
 #define InitDrs             	(12)
 #define StepClockAdc			(13)
 #define StopCalibAdc			(14)
@@ -48,7 +48,7 @@
 
 
 const u32 conf[] = { 1 << PhaseClkAdc, 1 << Spare2, 1 << Spare3, 1 << Spare4, 1<<InitCm1, 1<<InitCm2, 1<<InitCm3, 1<<InitDacRoFs,
-                     1 << InitT1, 1<<InitT2, 1<<InitT3, 1<<ResetDrs, 1<<InitDrs, 1<<StepClockAdc,1 << StopCalibAdc, 1 << CalibAdc9222,
+                     1 << InitT1, 1<<InitT2, 1<<InitT3, 1<<RESETDrs, 1<<InitDrs, 1<<StepClockAdc,1 << StopCalibAdc, 1 << CalibAdc9222,
                      1 << WRITECDCE,1 << READCDCE, 1 << COPYEECDCE, 1 <<CYCLEPOWERCDCE ,1 << SYNCCDCE,1 << INITCFGDRS};
 //#define EraseEPCS			(16)
 //=========================================================================

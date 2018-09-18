@@ -151,6 +151,7 @@ private slots:
 
     void on_actionMonitoring_triggered();
 
+
 private:
 	Ui::MainWindow *ui;
 

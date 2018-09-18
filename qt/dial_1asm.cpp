@@ -406,3 +406,8 @@ void dial_1Asm::on_cfgRegDrs_editingFinished()
     p_asm->Message(p_asm->CalibCmd(m_mask,m_chan,INITCFGDRS),"Init Cfg Drs");
 
 }
+
+void dial_1Asm::on_ResetDrs_clicked()
+{
+    p_asm->Message(p_asm->CalibCmd(m_mask,m_chan,RESETDrs),"Reset Drs");
+}
