@@ -16,13 +16,14 @@
 #include <QMainWindow>
 #include <QTime>
 #include <QProcess>
+#include <QLCDNumber>
 
 #include "Tcp.h"
 #include "Amc.h"
 #include "Asm.h"
 #include "Thor.h"
 #include "HvClient.h"
-#include "monitoring.h"
+
 
 //===============================================
 //===============================================
@@ -150,7 +151,40 @@ private slots:
     void on_pushButton_clicked();
 
     void on_actionMonitoring_triggered();
+    void on_Refresh_clicked();
 
+    void on_CalibVCO_1_clicked();
+    void on_PowerCdce_1_clicked();
+
+    void on_CalibVCO_2_clicked();
+
+    void on_CalibVCO_3_clicked();
+
+    void on_CalibVCO_4_clicked();
+
+    void on_CalibVCO_5_clicked();
+
+    void on_CalibVCO_6_clicked();
+
+    void on_CalibVCO_7_clicked();
+
+    void on_CalibVCO_8_clicked();
+
+    void on_CalibVCO_9_clicked();
+
+    void on_CalibVCO_10_clicked();
+
+    void on_CalibVCO_11_clicked();
+
+    void on_CalibVCO_12_clicked();
+
+    void on_AllCalibVCO_clicked();
+
+    void on_ConfigCdce_1_clicked();
+
+    void on_AllPower_clicked();
+
+    void on_AllConfig_clicked();
 
 private:
 	Ui::MainWindow *ui;
@@ -193,7 +227,12 @@ private:
     void HvTip(void);
     void closeEvent(QCloseEvent *event);
     QString ThorMask(int Asm, u8 Mask);
-    monitoring *monitor;
+    void ReadFrequency(CAsm * p_asm,u32 m_mask,u8 m_chan,QLCDNumber * Freq);
+    void CalculFrequency(CAsm * p_asm,QProgressBar *Bar, u32 m_mask,u8 m_chan,QLCDNumber * Freq);
+    void CalibVCO(CAsm * p_asm,u32 m_mask,u8 m_chan);
+
+
+
     QString PathMonitor;
     QString PathDir;
     bool OnStartMonitor;
@@ -202,6 +241,15 @@ private:
     QString ArgsHvServer;
     QProcess *HvServer;
     QProcess *myProcess;
+    u64 TrigMaskThor;
+    QLCDNumber * Freq[NB_CHAN];
+    QProgressBar * Bar[NB_CHAN];
+    QCheckBox * ock[NB_CHAN];
+    QLineEdit * fli[NB_CHAN];
+    QLineEdit * mli[NB_CHAN];
+    QLineEdit * Firmrev[NB_CHAN];
+    QCheckBox * Calibok[NB_CHAN][3];
+    QLineEdit * Lockpll[NB_CHAN];
  };
 //===============================================
 //===============================================

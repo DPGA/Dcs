@@ -5,17 +5,17 @@
 #include "Asm.h"
 #include "Amc.h"
 #include "Thor.h"
-#include "shdmem.h"
-#include "ringshm.h"
-#include "decodeframe.h"
-#include "monitoring.h"
+//#include "shdmem.h"
+//#include "ringshm.h"
+//#include "decodeframe.h"
+//#include "monitoring.h"
 
 namespace Ui {
 class Dial_calib;
 }
 
 
-class Dial_calib : public QDialog, public DecodeFrame
+class Dial_calib : public QDialog //public DecodeFrame
 {
    Q_OBJECT
 
@@ -90,13 +90,13 @@ private:
     void Run1sec();
     const uint16_t t_phase[50] = {0x0,0x1,0x2,0x3,0x4,0x8,0x9,0xa,0xb,0xc,0x10,0x11,0x12,0x13,0x14,0x18,0x19,0x1a,0x1b,0x1c,0x20,0x21,0x22,0x23,0x24,
                           0x40,0x41,0x42,0x43,0x44,0x48,0x49,0x4a,0x4b,0x4c,0x50,0x51,0x52,0x53,0x54,0x58,0x59,0x5a,0x5b,0x5c,0x60,0x61,0x62,0x63,0x64};
-    ShmRingBuffer<SharedMemory> *ShdMem;
+  //  ShmRingBuffer<SharedMemory> *ShdMem;
     double CptTrame = 0;
     QList <class MyPlotsQwt *> lMyPlotsQwt;
     u16 ModeDaq;
     u32 m_usemask;
     bool m_send;
-    monitoring *Monitor;
+ //   monitoring *Monitor;
     double Mean[24];
     double Stdev[24];
     int nbstep;

@@ -13,6 +13,7 @@
 #include "ui_dial_amcreset.h"
 #include "command_error.h"
 #include "Amc.h"
+#include "QDebug"
 //===============================================
 //===============================================
 Dial_AmcReset::Dial_AmcReset(CAmc * amc,u32 use, QWidget *parent) :
@@ -69,6 +70,7 @@ void Dial_AmcReset::on_pushButton_Do_clicked()
     ui->textEdit_Msg->clear();
     u32 val = getrst();
  //   QString str = "Send Reset Command with arg 0x" + QString::number(val,16);
+    qDebug()  << "Send Reset Command with arg " << val ;
     ui->textEdit_Msg->append(QString("Send Reset Command with arg 0x%1").arg(val, 4, 16 , QChar('0')));
     if(p_amc->ResetCmd(val) == NO_ERROR) {
         ui->textEdit_Msg->setTextColor(QColor("green"));

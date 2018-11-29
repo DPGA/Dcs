@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>4</number>
     </property>
     <widget class="QWidget" name="AmcTab">
      <attribute name="title">
@@ -6686,7 +6686,7 @@
      <zorder>lineEdit_ThorTab_PTrigMask</zorder>
      <zorder>lineEdit_ThorTab_TrigPat</zorder>
     </widget>
-    <widget class="QWidget" name="tab">
+    <widget class="QWidget" name="HvTab">
      <attribute name="title">
       <string>High Voltage</string>
      </attribute>
@@ -8002,6 +8002,1551 @@
      <zorder>checkBox_HvPos_1</zorder>
      <zorder>checkBox_HvAct_1</zorder>
     </widget>
+    <widget class="QWidget" name="AsmClockTab">
+     <attribute name="title">
+      <string>Asm Clock</string>
+     </attribute>
+     <widget class="QGroupBox" name="groupBox_43">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>20</y>
+        <width>791</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Asm 0</string>
+      </property>
+      <widget class="QCheckBox" name="checkBox_1">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>20</y>
+         <width>87</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Active</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lineEdit_Stat_PllLock_1">
+       <property name="geometry">
+        <rect>
+         <x>280</x>
+         <y>20</y>
+         <width>71</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Nav</string>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QLCDNumber" name="Freq_1">
+       <property name="geometry">
+        <rect>
+         <x>360</x>
+         <y>20</y>
+         <width>64</width>
+         <height>23</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="CalibVCO_1">
+       <property name="geometry">
+        <rect>
+         <x>460</x>
+         <y>23</y>
+         <width>88</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Calibvco</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="PowerCdce_1">
+       <property name="geometry">
+        <rect>
+         <x>570</x>
+         <y>23</y>
+         <width>88</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>PowerCdce</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="ConfigCdce_1">
+       <property name="geometry">
+        <rect>
+         <x>680</x>
+         <y>23</y>
+         <width>88</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>ConfigCdce</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="FirmwareRev_1">
+       <property name="geometry">
+        <rect>
+         <x>70</x>
+         <y>20</y>
+         <width>61</width>
+         <height>21</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="FedId_1">
+       <property name="geometry">
+        <rect>
+         <x>170</x>
+         <y>20</y>
+         <width>61</width>
+         <height>21</height>
+        </rect>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QGroupBox" name="groupBox_44">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>70</y>
+        <width>791</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Asm 1</string>
+      </property>
+      <widget class="QCheckBox" name="checkBox_2">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>20</y>
+         <width>87</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Active</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lineEdit_Stat_PllLock_2">
+       <property name="geometry">
+        <rect>
+         <x>280</x>
+         <y>20</y>
+         <width>71</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Nav</string>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QLCDNumber" name="Freq_2">
+       <property name="geometry">
+        <rect>
+         <x>360</x>
+         <y>20</y>
+         <width>64</width>
+         <height>23</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="CalibVCO_2">
+       <property name="geometry">
+        <rect>
+         <x>460</x>
+         <y>23</y>
+         <width>88</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Calibvco</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="PowerCdce_2">
+       <property name="geometry">
+        <rect>
+         <x>570</x>
+         <y>23</y>
+         <width>88</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>PowerCdce</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="ConfigCdce_2">
+       <property name="geometry">
+        <rect>
+         <x>680</x>
+         <y>23</y>
+         <width>88</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>ConfigCdce</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="FirmwareRev_2">
+       <property name="geometry">
+        <rect>
+         <x>70</x>
+         <y>20</y>
+         <width>61</width>
+         <height>21</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="FedId_2">
+       <property name="geometry">
+        <rect>
+         <x>170</x>
+         <y>20</y>
+         <width>61</width>
+         <height>21</height>
+        </rect>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QGroupBox" name="groupBox_45">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>120</y>
+        <width>791</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Asm 2</string>
+      </property>
+      <widget class="QCheckBox" name="checkBox_3">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>20</y>
+         <width>87</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Active</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lineEdit_Stat_PllLock_3">
+       <property name="geometry">
+        <rect>
+         <x>280</x>
+         <y>20</y>
+         <width>71</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Nav</string>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QLCDNumber" name="Freq_3">
+       <property name="geometry">
+        <rect>
+         <x>360</x>
+         <y>20</y>
+         <width>64</width>
+         <height>23</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="CalibVCO_3">
+       <property name="geometry">
+        <rect>
+         <x>460</x>
+         <y>24</y>
+         <width>88</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Calibvco</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="PowerCdce_3">
+       <property name="geometry">
+        <rect>
+         <x>570</x>
+         <y>23</y>
+         <width>88</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>PowerCdce</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="ConfigCdce_3">
+       <property name="geometry">
+        <rect>
+         <x>680</x>
+         <y>23</y>
+         <width>88</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>ConfigCdce</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="FirmwareRev_3">
+       <property name="geometry">
+        <rect>
+         <x>70</x>
+         <y>20</y>
+         <width>61</width>
+         <height>21</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="FedId_3">
+       <property name="geometry">
+        <rect>
+         <x>170</x>
+         <y>20</y>
+         <width>61</width>
+         <height>21</height>
+        </rect>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QGroupBox" name="groupBox_46">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>170</y>
+        <width>791</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Asm 3</string>
+      </property>
+      <widget class="QCheckBox" name="checkBox_4">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>20</y>
+         <width>87</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Active</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lineEdit_Stat_PllLock_4">
+       <property name="geometry">
+        <rect>
+         <x>280</x>
+         <y>20</y>
+         <width>71</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Nav</string>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QLCDNumber" name="Freq_4">
+       <property name="geometry">
+        <rect>
+         <x>360</x>
+         <y>20</y>
+         <width>64</width>
+         <height>23</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="CalibVCO_4">
+       <property name="geometry">
+        <rect>
+         <x>460</x>
+         <y>23</y>
+         <width>88</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Calibvco</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="PowerCdce_4">
+       <property name="geometry">
+        <rect>
+         <x>570</x>
+         <y>23</y>
+         <width>88</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>PowerCdce</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="ConfigCdce_4">
+       <property name="geometry">
+        <rect>
+         <x>680</x>
+         <y>23</y>
+         <width>88</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>ConfigCdce</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="FirmwareRev_4">
+       <property name="geometry">
+        <rect>
+         <x>70</x>
+         <y>20</y>
+         <width>61</width>
+         <height>21</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="FedId_4">
+       <property name="geometry">
+        <rect>
+         <x>170</x>
+         <y>20</y>
+         <width>61</width>
+         <height>21</height>
+        </rect>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QGroupBox" name="groupBox_47">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>220</y>
+        <width>791</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Asm 4</string>
+      </property>
+      <widget class="QCheckBox" name="checkBox_5">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>20</y>
+         <width>87</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Active</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lineEdit_Stat_PllLock_5">
+       <property name="geometry">
+        <rect>
+         <x>280</x>
+         <y>20</y>
+         <width>71</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Nav</string>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QLCDNumber" name="Freq_5">
+       <property name="geometry">
+        <rect>
+         <x>360</x>
+         <y>20</y>
+         <width>64</width>
+         <height>23</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="CalibVCO_5">
+       <property name="geometry">
+        <rect>
+         <x>460</x>
+         <y>24</y>
+         <width>88</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Calibvco</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="PowerCdce_5">
+       <property name="geometry">
+        <rect>
+         <x>570</x>
+         <y>23</y>
+         <width>88</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>PowerCdce</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="ConfigCdce_5">
+       <property name="geometry">
+        <rect>
+         <x>680</x>
+         <y>23</y>
+         <width>88</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>ConfigCdce</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="FirmwareRev_5">
+       <property name="geometry">
+        <rect>
+         <x>70</x>
+         <y>20</y>
+         <width>61</width>
+         <height>21</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="FedId_5">
+       <property name="geometry">
+        <rect>
+         <x>170</x>
+         <y>20</y>
+         <width>61</width>
+         <height>21</height>
+        </rect>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QGroupBox" name="groupBox_48">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>270</y>
+        <width>791</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Asm 5</string>
+      </property>
+      <widget class="QCheckBox" name="checkBox_6">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>20</y>
+         <width>87</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Active</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lineEdit_Stat_PllLock_6">
+       <property name="geometry">
+        <rect>
+         <x>280</x>
+         <y>20</y>
+         <width>71</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Nav</string>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QLCDNumber" name="Freq_6">
+       <property name="geometry">
+        <rect>
+         <x>360</x>
+         <y>20</y>
+         <width>64</width>
+         <height>23</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="CalibVCO_6">
+       <property name="geometry">
+        <rect>
+         <x>460</x>
+         <y>24</y>
+         <width>88</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Calibvco</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="PowerCdce_6">
+       <property name="geometry">
+        <rect>
+         <x>570</x>
+         <y>24</y>
+         <width>88</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>PowerCdce</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="ConfigCdce_6">
+       <property name="geometry">
+        <rect>
+         <x>680</x>
+         <y>23</y>
+         <width>88</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>ConfigCdce</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="FirmwareRev_6">
+       <property name="geometry">
+        <rect>
+         <x>70</x>
+         <y>20</y>
+         <width>61</width>
+         <height>21</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="FedId_6">
+       <property name="geometry">
+        <rect>
+         <x>170</x>
+         <y>20</y>
+         <width>61</width>
+         <height>21</height>
+        </rect>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QGroupBox" name="groupBox_49">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>320</y>
+        <width>791</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Asm 6</string>
+      </property>
+      <widget class="QCheckBox" name="checkBox_7">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>20</y>
+         <width>87</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Active</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lineEdit_Stat_PllLock_7">
+       <property name="geometry">
+        <rect>
+         <x>280</x>
+         <y>20</y>
+         <width>71</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Nav</string>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QLCDNumber" name="Freq_7">
+       <property name="geometry">
+        <rect>
+         <x>360</x>
+         <y>20</y>
+         <width>64</width>
+         <height>23</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="CalibVCO_7">
+       <property name="geometry">
+        <rect>
+         <x>460</x>
+         <y>23</y>
+         <width>88</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Calibvco</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="PowerCdce_7">
+       <property name="geometry">
+        <rect>
+         <x>570</x>
+         <y>23</y>
+         <width>88</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>PowerCdce</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="ConfigCdce_7">
+       <property name="geometry">
+        <rect>
+         <x>680</x>
+         <y>23</y>
+         <width>88</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>ConfigCdce</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="FirmwareRev_7">
+       <property name="geometry">
+        <rect>
+         <x>70</x>
+         <y>20</y>
+         <width>61</width>
+         <height>21</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="FedId_7">
+       <property name="geometry">
+        <rect>
+         <x>170</x>
+         <y>20</y>
+         <width>61</width>
+         <height>21</height>
+        </rect>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QGroupBox" name="groupBox_50">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>370</y>
+        <width>791</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Asm 7 </string>
+      </property>
+      <widget class="QCheckBox" name="checkBox_8">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>20</y>
+         <width>87</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Active</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lineEdit_Stat_PllLock_8">
+       <property name="geometry">
+        <rect>
+         <x>280</x>
+         <y>20</y>
+         <width>71</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Nav</string>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QLCDNumber" name="Freq_8">
+       <property name="geometry">
+        <rect>
+         <x>360</x>
+         <y>20</y>
+         <width>64</width>
+         <height>23</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="CalibVCO_8">
+       <property name="geometry">
+        <rect>
+         <x>460</x>
+         <y>23</y>
+         <width>88</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Calibvco</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="PowerCdce_8">
+       <property name="geometry">
+        <rect>
+         <x>570</x>
+         <y>24</y>
+         <width>88</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>PowerCdce</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="ConfigCdce_8">
+       <property name="geometry">
+        <rect>
+         <x>680</x>
+         <y>23</y>
+         <width>88</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>ConfigCdce</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="FirmwareRev_8">
+       <property name="geometry">
+        <rect>
+         <x>70</x>
+         <y>20</y>
+         <width>61</width>
+         <height>21</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="FedId_8">
+       <property name="geometry">
+        <rect>
+         <x>170</x>
+         <y>20</y>
+         <width>61</width>
+         <height>21</height>
+        </rect>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QGroupBox" name="groupBox_51">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>420</y>
+        <width>791</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Asm 8</string>
+      </property>
+      <widget class="QCheckBox" name="checkBox_9">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>20</y>
+         <width>87</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Active</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lineEdit_Stat_PllLock_9">
+       <property name="geometry">
+        <rect>
+         <x>280</x>
+         <y>20</y>
+         <width>71</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Nav</string>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QLCDNumber" name="Freq_9">
+       <property name="geometry">
+        <rect>
+         <x>360</x>
+         <y>20</y>
+         <width>64</width>
+         <height>23</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="CalibVCO_9">
+       <property name="geometry">
+        <rect>
+         <x>460</x>
+         <y>23</y>
+         <width>88</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Calibvco</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="PowerCdce_9">
+       <property name="geometry">
+        <rect>
+         <x>570</x>
+         <y>23</y>
+         <width>88</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>PowerCdce</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="ConfigCdce_9">
+       <property name="geometry">
+        <rect>
+         <x>680</x>
+         <y>23</y>
+         <width>88</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>ConfigCdce</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="FirmwareRev_9">
+       <property name="geometry">
+        <rect>
+         <x>70</x>
+         <y>20</y>
+         <width>61</width>
+         <height>21</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="FedId_9">
+       <property name="geometry">
+        <rect>
+         <x>170</x>
+         <y>20</y>
+         <width>61</width>
+         <height>21</height>
+        </rect>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QGroupBox" name="groupBox_52">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>470</y>
+        <width>791</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Asm 9</string>
+      </property>
+      <widget class="QCheckBox" name="checkBox_10">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>20</y>
+         <width>87</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Active</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lineEdit_Stat_PllLock_10">
+       <property name="geometry">
+        <rect>
+         <x>280</x>
+         <y>20</y>
+         <width>71</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Nav</string>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QLCDNumber" name="Freq_10">
+       <property name="geometry">
+        <rect>
+         <x>360</x>
+         <y>20</y>
+         <width>64</width>
+         <height>23</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="CalibVCO_10">
+       <property name="geometry">
+        <rect>
+         <x>460</x>
+         <y>23</y>
+         <width>88</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Calibvco</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="PowerCdce_10">
+       <property name="geometry">
+        <rect>
+         <x>570</x>
+         <y>23</y>
+         <width>88</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>PowerCdce</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="ConfigCdce_10">
+       <property name="geometry">
+        <rect>
+         <x>680</x>
+         <y>23</y>
+         <width>88</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>ConfigCdce</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="FirmwareRev_10">
+       <property name="geometry">
+        <rect>
+         <x>70</x>
+         <y>20</y>
+         <width>61</width>
+         <height>21</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="FedId_10">
+       <property name="geometry">
+        <rect>
+         <x>170</x>
+         <y>20</y>
+         <width>61</width>
+         <height>21</height>
+        </rect>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QGroupBox" name="groupBox_53">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>520</y>
+        <width>791</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Asm 10</string>
+      </property>
+      <widget class="QCheckBox" name="checkBox_11">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>20</y>
+         <width>87</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Active</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lineEdit_Stat_PllLock_11">
+       <property name="geometry">
+        <rect>
+         <x>280</x>
+         <y>20</y>
+         <width>71</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Nav</string>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QLCDNumber" name="Freq_11">
+       <property name="geometry">
+        <rect>
+         <x>360</x>
+         <y>20</y>
+         <width>64</width>
+         <height>23</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="CalibVCO_11">
+       <property name="geometry">
+        <rect>
+         <x>460</x>
+         <y>23</y>
+         <width>88</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Calibvco</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="PowerCdce_11">
+       <property name="geometry">
+        <rect>
+         <x>570</x>
+         <y>23</y>
+         <width>88</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>PowerCdce</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="ConfigCdce_11">
+       <property name="geometry">
+        <rect>
+         <x>680</x>
+         <y>23</y>
+         <width>88</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>ConfigCdce</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="FirmwareRev_11">
+       <property name="geometry">
+        <rect>
+         <x>70</x>
+         <y>20</y>
+         <width>61</width>
+         <height>21</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="FedId_11">
+       <property name="geometry">
+        <rect>
+         <x>170</x>
+         <y>20</y>
+         <width>61</width>
+         <height>21</height>
+        </rect>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QGroupBox" name="groupBox_54">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>570</y>
+        <width>791</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Asm 11</string>
+      </property>
+      <widget class="QCheckBox" name="checkBox_12">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>20</y>
+         <width>87</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Active</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lineEdit_Stat_PllLock_12">
+       <property name="geometry">
+        <rect>
+         <x>280</x>
+         <y>20</y>
+         <width>71</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Nav</string>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QLCDNumber" name="Freq_12">
+       <property name="geometry">
+        <rect>
+         <x>360</x>
+         <y>20</y>
+         <width>64</width>
+         <height>23</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="CalibVCO_12">
+       <property name="geometry">
+        <rect>
+         <x>460</x>
+         <y>23</y>
+         <width>88</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Calibvco</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="PowerCdce_12">
+       <property name="geometry">
+        <rect>
+         <x>570</x>
+         <y>23</y>
+         <width>88</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>PowerCdce</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="ConfigCdce_12">
+       <property name="geometry">
+        <rect>
+         <x>680</x>
+         <y>23</y>
+         <width>88</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>ConfigCdce</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="FirmwareRev_12">
+       <property name="geometry">
+        <rect>
+         <x>70</x>
+         <y>20</y>
+         <width>61</width>
+         <height>21</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="FedId_12">
+       <property name="geometry">
+        <rect>
+         <x>170</x>
+         <y>20</y>
+         <width>61</width>
+         <height>21</height>
+        </rect>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QPushButton" name="Refresh">
+      <property name="geometry">
+       <rect>
+        <x>810</x>
+        <y>670</y>
+        <width>81</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Refresh</string>
+      </property>
+     </widget>
+     <widget class="QProgressBar" name="Bar_1">
+      <property name="geometry">
+       <rect>
+        <x>830</x>
+        <y>40</y>
+        <width>118</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="value">
+       <number>0</number>
+      </property>
+     </widget>
+     <widget class="QProgressBar" name="Bar_2">
+      <property name="geometry">
+       <rect>
+        <x>830</x>
+        <y>90</y>
+        <width>118</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="value">
+       <number>0</number>
+      </property>
+     </widget>
+     <widget class="QProgressBar" name="Bar_3">
+      <property name="geometry">
+       <rect>
+        <x>830</x>
+        <y>140</y>
+        <width>118</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="value">
+       <number>0</number>
+      </property>
+     </widget>
+     <widget class="QProgressBar" name="Bar_4">
+      <property name="geometry">
+       <rect>
+        <x>830</x>
+        <y>190</y>
+        <width>118</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="value">
+       <number>0</number>
+      </property>
+     </widget>
+     <widget class="QProgressBar" name="Bar_5">
+      <property name="geometry">
+       <rect>
+        <x>830</x>
+        <y>240</y>
+        <width>118</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="value">
+       <number>0</number>
+      </property>
+     </widget>
+     <widget class="QProgressBar" name="Bar_6">
+      <property name="geometry">
+       <rect>
+        <x>830</x>
+        <y>290</y>
+        <width>118</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="value">
+       <number>0</number>
+      </property>
+     </widget>
+     <widget class="QProgressBar" name="Bar_7">
+      <property name="geometry">
+       <rect>
+        <x>830</x>
+        <y>340</y>
+        <width>118</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="value">
+       <number>0</number>
+      </property>
+     </widget>
+     <widget class="QProgressBar" name="Bar_8">
+      <property name="geometry">
+       <rect>
+        <x>830</x>
+        <y>390</y>
+        <width>118</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="value">
+       <number>0</number>
+      </property>
+     </widget>
+     <widget class="QProgressBar" name="Bar_9">
+      <property name="geometry">
+       <rect>
+        <x>830</x>
+        <y>440</y>
+        <width>118</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="value">
+       <number>0</number>
+      </property>
+     </widget>
+     <widget class="QProgressBar" name="Bar_10">
+      <property name="geometry">
+       <rect>
+        <x>830</x>
+        <y>490</y>
+        <width>118</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="value">
+       <number>0</number>
+      </property>
+     </widget>
+     <widget class="QProgressBar" name="Bar_11">
+      <property name="geometry">
+       <rect>
+        <x>830</x>
+        <y>540</y>
+        <width>118</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="value">
+       <number>0</number>
+      </property>
+     </widget>
+     <widget class="QProgressBar" name="Bar_12">
+      <property name="geometry">
+       <rect>
+        <x>830</x>
+        <y>590</y>
+        <width>118</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="value">
+       <number>0</number>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="AllCalibVCO">
+      <property name="geometry">
+       <rect>
+        <x>50</x>
+        <y>660</y>
+        <width>88</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>All Calibvco</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="AllPower">
+      <property name="geometry">
+       <rect>
+        <x>190</x>
+        <y>660</y>
+        <width>88</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>All Power</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="AllConfig">
+      <property name="geometry">
+       <rect>
+        <x>320</x>
+        <y>660</y>
+        <width>88</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>All Config</string>
+      </property>
+     </widget>
+    </widget>
     <widget class="QWidget" name="MiscTab">
      <attribute name="title">
       <string>Miscellaneous</string>
@@ -9197,7 +10742,7 @@
      <x>0</x>
      <y>0</y>
      <width>1019</width>
-     <height>19</height>
+     <height>30</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuGeneral">

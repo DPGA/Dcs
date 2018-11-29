@@ -76,6 +76,7 @@ void    TimerMessage (QString title, QString text, int ms = TIMERDFLT);
 QString ElapsedTime  (u32 var);
 u8      Reverse      (u8 c);
 u32     QsOrdorn     (u32 var);
+void    writerXml    (QString dir,u16 *pData,u32 sizeData,QString fileName,u8 num);
 //=========================================================
 //=========================================================
 //=========================================================

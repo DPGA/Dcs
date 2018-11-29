@@ -54,6 +54,7 @@ using namespace std;
 #include "dial_1asm.h"
 #include "Version.h"
 
+
 //=================================================
 //=================================================
 const char *mois[13] = {"","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"};
@@ -106,6 +107,28 @@ MainWindow::MainWindow(QWidget *parent) :
     ThorTip();
     MiscTip();
     HvTip();
+
+    mli[0]  =  ui->FedId_1; mli[1]  =  ui->FedId_2; mli[2]  =  ui->FedId_3; mli[3]  =  ui->FedId_4; mli[4]  =  ui->FedId_5; mli[5]  =  ui->FedId_6;
+    mli[6]  =  ui->FedId_7; mli[7]  =  ui->FedId_8; mli[8]  =  ui->FedId_9; mli[9]  =  ui->FedId_10;mli[10] =  ui->FedId_11;mli[11] =  ui->FedId_12;
+
+    ock[0]  =  ui->checkBox_1;ock[1]  =  ui->checkBox_2;ock[2]  =  ui->checkBox_3;ock[3]  =  ui->checkBox_4;ock[4]  =  ui->checkBox_5;ock[5]  =  ui->checkBox_6;
+    ock[6]  =  ui->checkBox_7;ock[7]  =  ui->checkBox_8;ock[8]  =  ui->checkBox_9;ock[9]  =  ui->checkBox_10;ock[10] =  ui->checkBox_11;ock[11] =  ui->checkBox_12;
+
+    Firmrev[0]  = ui->FirmwareRev_1;Firmrev[1]  = ui->FirmwareRev_2;Firmrev[2]  = ui->FirmwareRev_3;Firmrev[3]  = ui->FirmwareRev_4;Firmrev[4]  = ui->FirmwareRev_5;Firmrev[5]  = ui->FirmwareRev_6;
+    Firmrev[6]  = ui->FirmwareRev_7;Firmrev[7]  = ui->FirmwareRev_8;Firmrev[8]  = ui->FirmwareRev_9;Firmrev[9]  = ui->FirmwareRev_10;Firmrev[10] = ui->FirmwareRev_11;Firmrev[11] = ui->FirmwareRev_12;
+
+    Lockpll[0]  = ui->lineEdit_Stat_PllLock_1;Lockpll[1]  = ui->lineEdit_Stat_PllLock_2;Lockpll[2]  = ui->lineEdit_Stat_PllLock_3;Lockpll[3]  = ui->lineEdit_Stat_PllLock_4;
+    Lockpll[4]  = ui->lineEdit_Stat_PllLock_5;Lockpll[5]  = ui->lineEdit_Stat_PllLock_6;Lockpll[6]  = ui->lineEdit_Stat_PllLock_7;Lockpll[7]  = ui->lineEdit_Stat_PllLock_8;
+    Lockpll[8]  = ui->lineEdit_Stat_PllLock_9;Lockpll[9]  = ui->lineEdit_Stat_PllLock_10;Lockpll[10] = ui->lineEdit_Stat_PllLock_11;Lockpll[11] = ui->lineEdit_Stat_PllLock_12;
+
+    Freq[0] = ui->Freq_1;Freq[1] = ui->Freq_2;Freq[2] = ui->Freq_3;Freq[3] = ui->Freq_4;Freq[4] = ui->Freq_5;Freq[5] = ui->Freq_6;
+    Freq[6] = ui->Freq_7;Freq[7] = ui->Freq_8;Freq[8] = ui->Freq_9;Freq[9] = ui->Freq_10;Freq[10] = ui->Freq_11;Freq[11] = ui->Freq_12;
+
+    Bar[0] = ui->Bar_1;Bar[1] = ui->Bar_2;Bar[2] = ui->Bar_3;Bar[3] = ui->Bar_4;Bar[4] = ui->Bar_5;Bar[5] = ui->Bar_6;
+    Bar[6] = ui->Bar_7;Bar[7] = ui->Bar_8;Bar[8] = ui->Bar_9;Bar[9] = ui->Bar_10;Bar[10] = ui->Bar_11;Bar[11] = ui->Bar_12;
+
+
+
 
     ui->actionStart_Thor->setToolTip("blabala");
 
@@ -272,7 +295,7 @@ void MainWindow::closeEvent(QCloseEvent *event)
 			 if (child.attribute("TITLE") == "AsmFE_10")    checkid(10, child.attribute("ID"), child.attribute("ACTIVED").toUInt());
 			 if (child.attribute("TITLE") == "AsmFE_11")    checkid(11, child.attribute("ID"), child.attribute("ACTIVED").toUInt());
 			 if (child.attribute("TITLE") == "ThorFE_0")    checkid(12, child.attribute("ID"), child.attribute("ACTIVED").toUInt());
-			 
+             if (child.attribute("TITLE") == "TrigMaskThor") TrigMaskThor = child.attribute("VALUE").toUInt();
 			 if (child.attribute("TITLE") == "HV_IP")       hvip = child.attribute("ID");
 			 if (child.attribute("TITLE") == "HV_PORT")     hvport = child.attribute("ID").toInt();
             		 if (child.attribute("TITLE") == "MONITOR")     {PathMonitor = child.attribute("PATH");OnStartMonitor = (bool) child.attribute("START").toInt();}
@@ -373,7 +396,7 @@ void MainWindow::on_actionVerbose_triggered()
 //-------------------------------------------------
 void MainWindow::on_actionDaq_Run_triggered()
 {
-    Dial_AllDaq dl (&amc, &asmm, &thor, m_usemask, m_daqsequence);
+    Dial_AllDaq dl (&amc, &asmm, &thor, m_usemask, m_daqsequence,PathDir,TrigMaskThor);
     dl .setModal(true);
     dl.exec();
 }
@@ -544,7 +567,7 @@ void MainWindow::AmcDisplay(void)
 
 	ui->lineEdit_AmcTab_PtrigCnt->setText(QString::number(p_amcdt->PrTrigCount));
 	ui->lineEdit_AmcTab_TrigCnt->setText(QString::number(p_amcdt->TrigCount));
-
+/*
     ui->lineEdit_AmcTab_FrmCount_1->setText(QString::number(p_amcdt->FrmCount[0]));
     ui->lineEdit_AmcTab_FrmCount_2->setText(QString::number(p_amcdt->FrmCount[1]));
     ui->lineEdit_AmcTab_FrmCount_3->setText(QString::number(p_amcdt->FrmCount[2]));
@@ -557,7 +580,7 @@ void MainWindow::AmcDisplay(void)
     ui->lineEdit_AmcTab_FrmCount_10->setText(QString::number(p_amcdt->FrmCount[9]));
     ui->lineEdit_AmcTab_FrmCount_11->setText(QString::number(p_amcdt->FrmCount[10]));
     ui->lineEdit_AmcTab_FrmCount_12->setText(QString::number(p_amcdt->FrmCount[11]));
-
+*/
 	ui->lineEdit_AmcTab_LTemp->setText(QString::number(((double)p_amcdt->local_temperature * TEMP_LSB),'f',2) + " °C");
 	ui->lineEdit_AmcTab_FTemp->setText(QString::number(((double)p_amcdt->fpga_temperature * TEMP_LSB),'f', 2) + " °C");
 
@@ -1787,3 +1810,264 @@ void MainWindow::on_actionMonitoring_triggered()
     }
 }
 
+
+
+
+
+void MainWindow::ReadFrequency(CAsm * p_asm,u32 m_mask,u8 m_chan,QLCDNumber * Freq)
+//===============================================
+//===============================================
+{
+    int ret;
+    u16 reg[9];
+    p_asm->Message(ret=p_asm->ReadCmd(m_mask,m_frontend[m_chan] , 9, 0x16, &reg[0]),"Read Value 0x" + QString::number(reg[0],16));
+    long int freq  = (long int) (reg[0]) << 32 |reg[1] << 16 | reg[2];
+    long int freq1 = (long int) (reg[3]) << 32 |reg[4] << 16 | reg[5];
+    long int freq2 = (long int) (reg[6]) << 32 |reg[7] << 16 | reg[8];
+
+    double val  = (double) freq  / 10.0;
+    double val1 = (double) freq1 / 10.0;
+    double val2 = (double) freq2 / 10.0;
+
+ /*   ui->ValFreq->display((val <10 ? "0" : "") + QString().setNum(val, 'f', 2)); //display((double)(freq/10));
+    if (fabs(val - 30.0) > 0.5) ui->ValFreq->setPalette(Qt::red);
+    else ui->ValFreq->setPalette(Qt::green);
+*/
+    Freq->display((val1 <10 ? "0" : "") + QString().setNum(val1, 'f', 2)); //display((double)(freq/10));
+    if (fabs(val1 - 30.0) > 0.5) Freq->setPalette(Qt::red);
+    else Freq->setPalette(Qt::green);
+
+/*    ui->ValFreq_3->display((val2 <10 ? "0" : "") + QString().setNum(val2, 'f', 2)); //display((double)(freq/10));
+    if (fabs(val - 30.0) > 0.5) ui->ValFreq_3->setPalette(Qt::red);
+    else ui->ValFreq_3->setPalette(Qt::green);
+*/
+
+}
+
+void MainWindow::CalculFrequency(CAsm * p_asm,QProgressBar *Bar, u32 m_mask,u8 m_chan,QLCDNumber * Freq)
+//===============================================
+//===============================================
+{
+    int ret;
+ //   Bar->show();
+    Bar->setRange(0,100);
+    Bar->setValue(0);
+    p_asm->Message(ret=p_asm->CalibCmd(m_mask,m_frontend[m_chan],Spare3),"Reset frequency"); //Resert counter Frequency
+    Bar->setValue(25);
+    ReadFrequency(p_asm,m_mask,m_chan,Freq);
+    Bar->setValue(50);
+    p_asm->Message(ret=p_asm->CalibCmd(m_mask,m_frontend[m_chan] ,Spare2),"Init Calcul frequency"); //Init counter Frequency
+    Bar->setValue(75);
+    ReadFrequency(p_asm,m_mask,m_chan,Freq);
+    Bar->setValue(100);
+ //   Bar->hide();
+}
+
+
+
+void MainWindow::on_Refresh_clicked()
+{
+    u32 mask;
+    CAsm * p_asm = &asmm;
+
+//    ui->progressBar->setValue(0);
+    for(int chan=0; chan<NB_ASM; chan++) {
+   //     fli[chan]->setText(QString("0x%1").arg(m_frontend[chan], 2, 16, QChar('0')));
+        mask = 1 << chan;
+        p_asmdt = p_asm->GetData(chan);
+        if(p_asm->Dump(mask) == NO_ERROR) {
+            mli[chan]->setText(QString("0x%1").arg(p_asmdt->rd.AddrConf, 2 , 16,  QChar('0')));
+        } else {
+            mli[chan]->setText(QString("Nav"));
+        }
+        if(m_frontend[chan] == p_asmdt->rd.AddrConf) {
+            ock[chan]->setCheckState(Qt::Checked);
+        } else {
+            ock[chan]->setCheckState(Qt::Unchecked);
+        }
+        if(p_asm->Dump(mask) == NO_ERROR) {
+            Firmrev[chan]->setText(QString("%1.%2").arg(p_asmdt->rd.FwRev_Maj).arg(p_asmdt->rd.FwRev_Min,2, 10, QChar('0')));
+        } else {
+            Firmrev[chan]->setText(QString("Nav"));
+        }
+
+        Lockpll[chan]->setText(QString("0x%1").arg(p_asmdt->rd.Pll_Lock,4, 16, QChar('0')));
+        QString str = QString("<b>Pll Locked</b> 0x%1").arg(p_asmdt->rd.Pll_Lock,4, 16, QChar('0'));
+        str.append("<ul>");
+        if(p_asmdt->rd.Pll_Lock & (1 << 0)) str.append("<li>Pll Drs 0			: <font color='green'>Locked</li>");else str.append("<li>Pll Drs 0        : <font color='red'>not Locked</font></li>");
+        if(p_asmdt->rd.Pll_Lock & (1 << 1)) str.append("<li>Pll Drs 1			: <font color='green'>Locked</li>");else str.append("<li>Pll Drs 1        : <font color='red'>not Locked</font></li>");
+        if(p_asmdt->rd.Pll_Lock & (1 << 2)) str.append("<li>Pll Drs 2			: <font color='green'>Locked</li>");else str.append("<li>Pll Drs 2        : <font color='red'>not Locked</font></li>");
+        if(p_asmdt->rd.Pll_Lock & (1 << 3)) str.append("<li>Pll Cdce62005		: <font color='green'>Locked</li>");else str.append("<li>Pll Cdce62005    : <font color='red'>not Locked</font></li>");
+        if(p_asmdt->rd.Pll_Lock & (1 << 4)) str.append("<li>Pll 40Mhz to		: <font color='green'>Locked</li>");else str.append("<li>Pll 40Mhz to     : <font color='red'>not Locked</font></li>");
+        if(p_asmdt->rd.Pll_Lock & (1 << 5)) str.append("<li>Pll Config (FPGA): <font color='green'>Locked</li>");else str.append("<li>Pll Config (FPGA): <font color='red'>not Locked</font></li>");
+        if(p_asmdt->rd.Pll_Lock & (1 << 6)) str.append("<li>Pll Sample (FPGA): <font color='green'>Locked</li>");else str.append("<li>Pll Sample (FPGA): <font color='red'>not Locked</font></li>");
+        if(p_asmdt->rd.Pll_Lock & (1 << 13)) str.append("<li>Bad clock : <font color='red'>F_ClkAdc</li>");else str.append("<li>Good Clock : <font color='green'>f_clkadc</font></li>");
+        if(p_asmdt->rd.Pll_Lock & (1 << 14)) str.append("<li>Bad clock : <font color='red'>c_clk</li>");else str.append("<li>Good Clock : <font color='green'>C_Clk</font></li>");
+        if(p_asmdt->rd.Pll_Lock & (1 << 15)) str.append("<li>Active clock : <font color='green'>c_clk</li>");else str.append("<li>Active Clock : <font color='red'>f_clkadc</font></li>");
+        Lockpll[chan]->setToolTip(str);
+        CalculFrequency(p_asm,Bar[chan],mask,chan,Freq[chan]);
+     }
+
+  //      ui->progressBar->setValue(chan+1);
+ //   ui->progressBar->setValue(THOR_CHAN +1);
+}
+
+
+void MainWindow::CalibVCO(CAsm * p_asm,u32 m_mask,u8 m_chan)
+{
+    ASMDATA *AsmData;
+    u8 m_fe;
+
+    if (m_chan != BROADCAST_FE) { AsmData = p_asm->GetData(m_chan);m_fe = m_frontend[m_chan];}
+    else {AsmData = p_asm->GetData(0); m_fe = BROADCAST_FE;}
+    AsmData->rw.Jitter_Clean[6] &= 0xFBFFFFFF;
+
+    p_asm->Message(p_asm->WriteCmd(m_mask, m_fe, 2, 0x78 , (u16 *) &AsmData->rw.Jitter_Clean[6]),"Mode Calibration VCO CDCE62005");
+    p_asm->Message(p_asm->ConfigCdce62005(m_mask,m_fe,6,m_chan,false),"Calibration 0 VCO CDCE62005");
+
+    AsmData->rw.Jitter_Clean[6] |= 0x80000000;
+    p_asm->Message(p_asm->WriteCmd(m_mask, m_fe, 2, 0x78 , (u16 *) &AsmData->rw.Jitter_Clean[6]),"");
+    p_asm->Message(p_asm->ConfigCdce62005(m_mask,m_fe,6,m_chan,false),"Calibration 1 VCO CDCE62005");
+
+    AsmData->rw.Jitter_Clean[6] |= 0x84000000;
+    p_asm->Message(p_asm->WriteCmd(m_mask, m_fe, 2, 0x78 , (u16 *) &AsmData->rw.Jitter_Clean[6]),"");
+    p_asm->Message(p_asm->ConfigCdce62005(m_mask,m_fe,6,m_chan,false),"Calibration 2 VCO CDCE62005");
+
+    AsmData->rw.Jitter_Clean[6] &= 0x7fffffff;
+    p_asm->Message(p_asm->WriteCmd(m_mask, m_fe, 2, 0x78 , (u16 *) &AsmData->rw.Jitter_Clean[6]),"");
+    p_asm->Message(p_asm->ConfigCdce62005(m_mask,m_fe,6,m_chan,false),"End Calibration VCO CDCE62005");
+
+}
+
+
+void MainWindow::on_CalibVCO_1_clicked()
+{
+    CalibVCO(&asmm,1,0);
+    CalculFrequency(&asmm,Bar[0],1,0,Freq[0]);
+}
+
+void MainWindow::on_PowerCdce_1_clicked()
+{
+    asmm.Message(asmm.CalibCmd(1,m_frontend[0],CYCLEPOWERCDCE),"Operation Power off/on Cdece62005 Successfull ","Operation Power off/on Cdece62005 failed");
+}
+
+void MainWindow::on_CalibVCO_2_clicked()
+{
+    CalibVCO(&asmm,2,1);
+    CalculFrequency(&asmm,Bar[1],2,1,Freq[1]);
+}
+
+void MainWindow::on_CalibVCO_3_clicked()
+{
+    CalibVCO(&asmm,4,2);
+    CalculFrequency(&asmm,Bar[2],4,2,Freq[2]);
+}
+
+void MainWindow::on_CalibVCO_4_clicked()
+{
+    CalibVCO(&asmm,8,3);
+    CalculFrequency(&asmm,Bar[3],8,3,Freq[3]);
+}
+
+void MainWindow::on_CalibVCO_5_clicked()
+{
+    CalibVCO(&asmm,0x10,4);
+    CalculFrequency(&asmm,Bar[4],0x10,4,Freq[4]);
+}
+
+void MainWindow::on_CalibVCO_6_clicked()
+{
+    CalibVCO(&asmm,0x20,5);
+    CalculFrequency(&asmm,Bar[5],0x20,5,Freq[5]);
+}
+
+void MainWindow::on_CalibVCO_7_clicked()
+{
+    CalibVCO(&asmm,0x40,6);
+    CalculFrequency(&asmm,Bar[6],0x40,6,Freq[6]);
+}
+
+void MainWindow::on_CalibVCO_8_clicked()
+{
+    CalibVCO(&asmm,0x80,7);
+    CalculFrequency(&asmm,Bar[7],0x80,7,Freq[7]);
+}
+
+void MainWindow::on_CalibVCO_9_clicked()
+{
+    CalibVCO(&asmm,0x100,8);
+    CalculFrequency(&asmm,Bar[8],0x100,8,Freq[8]);
+}
+
+void MainWindow::on_CalibVCO_10_clicked()
+{
+    CalibVCO(&asmm,0x200,9);
+    CalculFrequency(&asmm,Bar[9],0x200,9,Freq[9]);
+}
+
+void MainWindow::on_CalibVCO_11_clicked()
+{
+    CalibVCO(&asmm,0x400,10);
+    CalculFrequency(&asmm,Bar[10],0x400,10,Freq[10]);
+}
+
+void MainWindow::on_CalibVCO_12_clicked()
+{
+    CalibVCO(&asmm,0x800,11);
+    CalculFrequency(&asmm,Bar[11],0x800,11,Freq[11]);
+}
+
+void MainWindow::on_AllCalibVCO_clicked()
+{
+/*    CalibVCO(&asmm,0xFFF,BROADCAST_FE);
+    on_Refresh_clicked();
+*/
+
+    ASMDATA *AsmData = asmm.GetData(0);
+    AsmData->rw.Jitter_Clean[6] &= 0xFFBFFFFF;  // Bit mode Cal à 0
+    u16 addreg = 6;
+    asmm.Message(asmm.WriteCmd(0xfff, BROADCAST_FE, 2, 0x78 , (u16 *) &AsmData->rw.Jitter_Clean[6]),"Mode Calibration VCO CDCE62005");
+    asmm.Message(asmm.WriteCmd(0xfff, BROADCAST_FE, 1, 0x95 , &addreg, true),"RegCdce "+ QString::number(addreg,16));
+    asmm.Message(asmm.WriteCmd(0xfff, BROADCAST_FE, 2, 0x22 , (u16 *) &conf[WRITECDCE], true),"Write cmd InitCdce");
+
+
+    AsmData->rw.Jitter_Clean[8] |= 0x00000080;
+    addreg = 8;
+    asmm.Message(asmm.WriteCmd(0xfff, BROADCAST_FE, 2, 0x7C , (u16 *) &AsmData->rw.Jitter_Clean[8]),"Mode Calibration VCO CDCE62005");
+    asmm.Message(asmm.WriteCmd(0xfff, BROADCAST_FE, 1, 0x95 , &addreg, true),"RegCdce "+ QString::number(addreg,16));
+    asmm.Message(asmm.WriteCmd(0xfff, BROADCAST_FE, 2, 0x22 , (u16 *) &conf[WRITECDCE], true),"Write cmd InitCdce");
+    AsmData->rw.Jitter_Clean[8] &= 0xffffff7f;
+    asmm.Message(asmm.WriteCmd(0xfff, BROADCAST_FE, 2, 0x7C , (u16 *) &AsmData->rw.Jitter_Clean[8]),"Mode Calibration VCO CDCE62005");
+    asmm.Message(asmm.WriteCmd(0xfff, BROADCAST_FE, 1, 0x95 , &addreg, true),"RegCdce "+ QString::number(addreg,16));
+    asmm.Message(asmm.WriteCmd(0xfff, BROADCAST_FE, 2, 0x22 , (u16 *) &conf[WRITECDCE], true),"Write cmd InitCdce");
+    AsmData->rw.Jitter_Clean[8] |= 0x00000080;
+    asmm.Message(asmm.WriteCmd(0xfff, BROADCAST_FE, 2, 0x7C , (u16 *) &AsmData->rw.Jitter_Clean[8]),"Mode Calibration VCO CDCE62005");
+    asmm.Message(asmm.WriteCmd(0xfff, BROADCAST_FE, 1, 0x95 , &addreg, true),"RegCdce "+ QString::number(addreg,16));
+    asmm.Message(asmm.WriteCmd(0xfff, BROADCAST_FE, 2, 0x22 , (u16 *) &conf[WRITECDCE], true),"Write cmd InitCdce");
+
+
+}
+
+void MainWindow::on_ConfigCdce_1_clicked()
+{
+    for (u16 j=0;j<8;j++) {//asmm->ConfigCdce62005(Mask,BROADCAST_FE, j,m_channel,true);
+    asmm.Message(asmm.WriteCmd(0xfff, BROADCAST_FE, 1, 0x95 , &j, true),"RegCdce "+ QString::number(j,16));
+    asmm.Message(asmm.WriteCmd(0xfff, BROADCAST_FE, 2, 0x22 , (u16 *) &conf[WRITECDCE], true),"Write cmd InitCdce");
+    }
+
+}
+
+void MainWindow::on_AllPower_clicked()
+{
+    asmm.Message(asmm.CalibCmd(0xfff,BROADCAST_FE,CYCLEPOWERCDCE),"Operation Power off/on Cdece62005 Successfull ","Operation Power off/on Cdece62005 failed");
+
+}
+
+void MainWindow::on_AllConfig_clicked()
+{
+    for (u16 j=0;j<8;j++) {//asmm->ConfigCdce62005(Mask,BROADCAST_FE, j,m_channel,true);
+        asmm.Message(asmm.WriteCmd(0xfff, BROADCAST_FE, 1, 0x95 , &j, true),"RegCdce "+ QString::number(j,16));
+        asmm.Message(asmm.WriteCmd(0xfff, BROADCAST_FE, 2, 0x22 , (u16 *) &conf[WRITECDCE], true),"Write cmd InitCdce");
+    }
+
+}

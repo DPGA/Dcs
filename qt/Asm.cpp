@@ -195,6 +195,15 @@ u16 CAsm::ComputeParity (u16 us)
 
 //=========================================================================
 //=========================================================================
+int CAsm:: Dump(u32 mask,u8 channel)
+{
+    m_channel = channel;
+    Dump(mask);
+}	// Dump
+
+
+//=========================================================================
+//=========================================================================
 int CAsm:: Dump(u32 mask)
 {
 	if(m_verbose) {
@@ -493,15 +502,14 @@ int  CAsm::WriteCmd   (u32 Mask, u16 FrontEnd, u16 NbToWrite, u16 StartAddr, u16
 		val++;
 	}
 	p_tcp->frm_cmd.arg16[i+3] = crc;
+    int n=0;
+    int ret;
+    do {
+        ret = (Connected) ? p_tcp->Exchange() :  p_tcp->Connect_Exchange() ;
+        ret= Manage(ret, nb);
 
-//	cout << "Connected  :" << Connected << endl;
- //   if (!p_tcp->IsConnected()) p_tcp->Connect();
-	int ret = (Connected) ? p_tcp->Exchange() :  p_tcp->Connect_Exchange() ;
-	ret= Manage(ret, nb);
-//	cout << "Manage " << ret << " " << nb << endl;
-	if(ret == NO_ERROR) {
-		ret = ReadAck(nb);
-	}
+        if (ret == NO_ERROR) ret = ReadAck(nb);
+    } while ((n++<3) && (ret != NO_ERROR));
 	return (ret);
 
 }	// WriteCmd
@@ -1251,11 +1259,14 @@ int CAsm::EraseEpcs(u32 Mask,u16 FrontEnd, bool Confirmation)
     }
     else
     {
+
         p_tcp->frm_cmd.arg16[1] =  CMDERASEEPCS;
         RandomErase = rand() % 65535;
         p_tcp->frm_cmd.arg16[2] =  RandomErase;
+
         WriteMsg("Asm Key protect (0x" + QString::number(RandomErase,16) + ")");
         RandomErase = cad(RandomErase);
+
 
     }
 	int ret = Manage(p_tcp->Connect_Exchange(), nb);

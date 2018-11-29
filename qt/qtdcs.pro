@@ -57,10 +57,11 @@ SOURCES += main.cpp\
     histogramme.cpp \
     mywindow.cpp \
     dial_1asm.cpp \
-    monitoring.cpp \
-    ipc.cpp
+#  monitoring.cpp \
+    ipc.cpp \
+    dial_mezza.cpp
 
-HEADERS  += mainwindow.h \
+HEADERS  += \
     Amc.h \
     dial_amcid.h \
     dial_amcdcdce.h \
@@ -98,8 +99,10 @@ HEADERS  += mainwindow.h \
     mywindow.h \
     dial_1asm.h \
     version.h \
-    monitoring.h \
-    ipc.h
+#    monitoring.h \
+    ipc.h \
+    mainwindow.h \
+    dial_mezza.h
 
 FORMS += \
     mainwindow.ui \
@@ -123,7 +126,8 @@ FORMS += \
     dial_thorprog.ui \
     dial_thorreg.ui \
     dial_verbose.ui \
-    dial_1asm.ui
+    dial_1asm.ui \
+    dial_mezza.ui
 
 
 INCLUDEPATH += ../../Lib/libshm/include/

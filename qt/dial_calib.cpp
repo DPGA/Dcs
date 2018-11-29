@@ -9,8 +9,8 @@
 
 Dial_calib::Dial_calib(CAmc *amc, CAsm* asmm, CThor *thor, u32 use, u16 *frontend,u32 usemask, QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::Dial_calib),
-    DecodeFrame()
+    ui(new Ui::Dial_calib)
+    //DecodeFrame()
 //===============================================
 //===============================================
 {
@@ -19,7 +19,7 @@ Dial_calib::Dial_calib(CAmc *amc, CAsm* asmm, CThor *thor, u32 use, u16 *fronten
     p_asm = asmm;
     p_amc = amc;
     p_thor = thor;
-    Monitor = NULL;
+//    Monitor = NULL;
     m_use = use;
     m_usemask = usemask;
     m_send = false;
@@ -75,7 +75,7 @@ void Dial_calib::CalibAuto()
 //===============================================
 //===============================================
 {
-   const unsigned int Pattern[6] = {1652,826,413,2254,1127,2611};
+/*   const unsigned int Pattern[6] = {1652,826,413,2254,1127,2611};
    bool ok = false;
    int nbtry = 0;
 
@@ -164,6 +164,7 @@ void Dial_calib::CalibAuto()
    Run1sec();
    ui->OneSec->setChecked(oneSec);
    on_StopCalib_clicked();
+   */
 }
 
 Dial_calib::~Dial_calib()
@@ -578,7 +579,7 @@ void Dial_calib::on_Monitoring_clicked()
 //===============================================
 //===============================================
 {
-    Monitor= new monitoring(NULL) ;
+ //   Monitor= new monitoring(NULL) ;
   //  dl.setModal(true);
  //   Monitor->setWindowModality(Qt::WindowModal);
  //   Monitor->show();
@@ -624,13 +625,13 @@ void Dial_calib::ReadShmData(unsigned int NoBoard)
 //===============================================
 //===============================================
 {
-   struct S_HeaderFrame *Header;
+ /*  struct S_HeaderFrame *Header;
    uint16_t *buf;
 
    while (ShdMem->begin() != ShdMem->end()) {
  //       qInfo() << "Traitement Fragment";
         SharedMemory Packet = ShdMem->dump_front();
-        SetPacket((uint16_t *) &Packet.raw[0]);
+        SetPacket((uint16_t *) &Packet.raw[0],8000); //attention au calcul
         Header = (struct S_HeaderFrame *) &Packet.raw[0];
 
         int FeID = GetFeId(); //((ntohs(Header->FeIdK30) & 0x7f00) >> 8) - 0x10;
@@ -667,6 +668,7 @@ void Dial_calib::ReadShmData(unsigned int NoBoard)
            Stdev[Ch] = stdevtemp;
         }
     }
+*/
 }
 
 

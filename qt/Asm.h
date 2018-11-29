@@ -203,6 +203,7 @@ class CAsm
 		QTextEdit * GetMsgBox (void);
 		int  GetChannel       (void);
 		int  Dump             (u32 mask);
+        int  Dump             (u32 mask,u8 channel);
 		void Display          (u32 mask);
 		void DisplayReadWrite (u32 mask);
 		void DisplayReadOnly  (u32 mask);

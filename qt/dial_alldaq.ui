@@ -56,7 +56,7 @@
    <property name="geometry">
     <rect>
      <x>200</x>
-     <y>440</y>
+     <y>490</y>
      <width>113</width>
      <height>32</height>
     </rect>
@@ -68,8 +68,8 @@
   <widget class="QPushButton" name="pushButton_Close">
    <property name="geometry">
     <rect>
-     <x>560</x>
-     <y>440</y>
+     <x>500</x>
+     <y>490</y>
      <width>113</width>
      <height>32</height>
     </rect>
@@ -82,7 +82,7 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>498</y>
+     <y>538</y>
      <width>771</width>
      <height>91</height>
     </rect>
@@ -377,8 +377,8 @@
   <widget class="QPushButton" name="pushButton_Stop">
    <property name="geometry">
     <rect>
-     <x>360</x>
-     <y>440</y>
+     <x>350</x>
+     <y>490</y>
      <width>113</width>
      <height>32</height>
     </rect>
@@ -540,8 +540,8 @@
   <widget class="QLineEdit" name="lineEdit_stat">
    <property name="geometry">
     <rect>
-     <x>440</x>
-     <y>280</y>
+     <x>680</x>
+     <y>200</y>
      <width>113</width>
      <height>21</height>
     </rect>
@@ -550,9 +550,9 @@
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>200</x>
-     <y>280</y>
-     <width>211</width>
+     <x>670</x>
+     <y>170</y>
+     <width>121</width>
      <height>20</height>
     </rect>
    </property>
@@ -563,197 +563,11 @@
     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
    </property>
   </widget>
-  <widget class="QSpinBox" name="delayTrigthor">
-   <property name="geometry">
-    <rect>
-     <x>470</x>
-     <y>380</y>
-     <width>61</width>
-     <height>23</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLabel" name="Label_delay_trig">
-   <property name="enabled">
-    <bool>true</bool>
-   </property>
-   <property name="geometry">
-    <rect>
-     <x>470</x>
-     <y>350</y>
-     <width>101</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Delay Trigger</string>
-   </property>
-  </widget>
-  <widget class="QComboBox" name="ModeDaqThor">
-   <property name="geometry">
-    <rect>
-     <x>200</x>
-     <y>320</y>
-     <width>211</width>
-     <height>26</height>
-    </rect>
-   </property>
-   <item>
-    <property name="text">
-     <string>Mode Thor And Left-Right</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>Mode Coinc 2 Mezza</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>Mode Coinc 1 to 3 board</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>Mode Thor Piedestaux</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>Mode Thor Or</string>
-    </property>
-   </item>
-  </widget>
-  <widget class="QLabel" name="Label_freqPiedthor">
-   <property name="enabled">
-    <bool>true</bool>
-   </property>
-   <property name="geometry">
-    <rect>
-     <x>200</x>
-     <y>350</y>
-     <width>111</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Freq Pied Thor</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="Label_freqPiedthorCalcul">
-   <property name="enabled">
-    <bool>true</bool>
-   </property>
-   <property name="geometry">
-    <rect>
-     <x>280</x>
-     <y>380</y>
-     <width>111</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>(2n+2)*20µs</string>
-   </property>
-  </widget>
-  <widget class="QSpinBox" name="FreqPiedThor">
-   <property name="enabled">
-    <bool>true</bool>
-   </property>
-   <property name="geometry">
-    <rect>
-     <x>200</x>
-     <y>380</y>
-     <width>61</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="minimum">
-    <number>1</number>
-   </property>
-   <property name="maximum">
-    <number>65535</number>
-   </property>
-  </widget>
-  <widget class="QLabel" name="Label_DelayCalcul">
-   <property name="enabled">
-    <bool>true</bool>
-   </property>
-   <property name="geometry">
-    <rect>
-     <x>560</x>
-     <y>380</y>
-     <width>111</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>(2n+2)*20µs</string>
-   </property>
-  </widget>
-  <widget class="QCheckBox" name="AsmModeThor">
-   <property name="geometry">
-    <rect>
-     <x>640</x>
-     <y>300</y>
-     <width>161</width>
-     <height>24</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Asm mode Thor</string>
-   </property>
-  </widget>
-  <widget class="QCheckBox" name="EnableRoi">
-   <property name="geometry">
-    <rect>
-     <x>640</x>
-     <y>280</y>
-     <width>161</width>
-     <height>24</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Enable Roi</string>
-   </property>
-  </widget>
-  <widget class="QSpinBox" name="NbSamples">
-   <property name="geometry">
-    <rect>
-     <x>570</x>
-     <y>330</y>
-     <width>91</width>
-     <height>23</height>
-    </rect>
-   </property>
-   <property name="minimum">
-    <number>10</number>
-   </property>
-   <property name="maximum">
-    <number>1024</number>
-   </property>
-  </widget>
-  <widget class="QLabel" name="Label_delay_trig_2">
-   <property name="enabled">
-    <bool>true</bool>
-   </property>
-   <property name="geometry">
-    <rect>
-     <x>670</x>
-     <y>330</y>
-     <width>101</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>NbSamples</string>
-   </property>
-  </widget>
   <widget class="QSpinBox" name="MonitoringValue">
    <property name="geometry">
     <rect>
-     <x>700</x>
-     <y>120</y>
+     <x>690</x>
+     <y>70</y>
      <width>71</width>
      <height>23</height>
     </rect>
@@ -768,8 +582,8 @@
   <widget class="QLabel" name="label_3">
    <property name="geometry">
     <rect>
-     <x>700</x>
-     <y>50</y>
+     <x>690</x>
+     <y>20</y>
      <width>91</width>
      <height>61</height>
     </rect>
@@ -777,6 +591,429 @@
    <property name="text">
     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Monitoring&lt;/p&gt;&lt;p&gt;Refresh&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
+  </widget>
+  <widget class="QLCDNumber" name="RunNb">
+   <property name="geometry">
+    <rect>
+     <x>670</x>
+     <y>130</y>
+     <width>64</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="lineWidth">
+    <number>1</number>
+   </property>
+   <property name="midLineWidth">
+    <number>0</number>
+   </property>
+   <property name="digitCount">
+    <number>6</number>
+   </property>
+   <property name="segmentStyle">
+    <enum>QLCDNumber::Flat</enum>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="SaveTest">
+   <property name="geometry">
+    <rect>
+     <x>750</x>
+     <y>100</y>
+     <width>61</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Test</string>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="SaveFile">
+   <property name="geometry">
+    <rect>
+     <x>670</x>
+     <y>100</y>
+     <width>61</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Save</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="labelRunNb">
+   <property name="geometry">
+    <rect>
+     <x>750</x>
+     <y>130</y>
+     <width>72</width>
+     <height>18</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Run Nb</string>
+   </property>
+  </widget>
+  <widget class="QGroupBox" name="groupBox_6">
+   <property name="geometry">
+    <rect>
+     <x>200</x>
+     <y>270</y>
+     <width>591</width>
+     <height>181</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Daq</string>
+   </property>
+   <widget class="QComboBox" name="ModeDaqThor">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>20</y>
+      <width>211</width>
+      <height>26</height>
+     </rect>
+    </property>
+    <item>
+     <property name="text">
+      <string>Mode Thor And Left-Right</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Mode Coinc 2 Mezza</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Mode Coinc 1 to 3 board</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Mode Thor Piedestaux</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Mode Thor Or</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QSpinBox" name="DeadTime">
+    <property name="geometry">
+     <rect>
+      <x>350</x>
+      <y>50</y>
+      <width>91</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="minimum">
+     <number>0</number>
+    </property>
+    <property name="maximum">
+     <number>4095</number>
+    </property>
+    <property name="value">
+     <number>1</number>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Label_delay_trig_4">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>350</x>
+      <y>30</y>
+      <width>61</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>DeadTime</string>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="NbSamples">
+    <property name="geometry">
+     <rect>
+      <x>230</x>
+      <y>50</y>
+      <width>91</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="minimum">
+     <number>10</number>
+    </property>
+    <property name="maximum">
+     <number>1024</number>
+    </property>
+    <property name="value">
+     <number>1023</number>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Label_delay_trig_2">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>230</x>
+      <y>30</y>
+      <width>101</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>NbSamples</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="AsmModeThor">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>70</y>
+      <width>121</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Asm mode Thor</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Label_freqPiedthor">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>90</y>
+      <width>111</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Freq Pied Thor</string>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="FreqPiedThor">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>120</y>
+      <width>61</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="minimum">
+     <number>1</number>
+    </property>
+    <property name="maximum">
+     <number>65535</number>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Label_freqPiedthorCalcul">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>140</y>
+      <width>111</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>(2n+2)*20µs</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Label_delay_trig">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>90</y>
+      <width>101</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Delay Trigger</string>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="delayTrigthor">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>120</y>
+      <width>61</width>
+      <height>23</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Label_DelayCalcul">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>140</y>
+      <width>111</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>(2n+2)*20µs</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="CalDeadTime">
+    <property name="geometry">
+     <rect>
+      <x>340</x>
+      <y>90</y>
+      <width>111</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="EnableRoi">
+    <property name="geometry">
+     <rect>
+      <x>460</x>
+      <y>20</y>
+      <width>121</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Enable Roi</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Label_delay_trig_3">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>460</x>
+      <y>40</y>
+      <width>121</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Thor mask trigger</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="ThorMaskTrig">
+    <property name="geometry">
+     <rect>
+      <x>460</x>
+      <y>60</y>
+      <width>113</width>
+      <height>22</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>460</x>
+      <y>90</y>
+      <width>81</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Set Mask</string>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="PulseTrigAsm">
+    <property name="geometry">
+     <rect>
+      <x>280</x>
+      <y>140</y>
+      <width>51</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="minimum">
+     <number>0</number>
+    </property>
+    <property name="maximum">
+     <number>15</number>
+    </property>
+    <property name="value">
+     <number>2</number>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Label_delay_trig_5">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>280</x>
+      <y>120</y>
+      <width>91</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>PulseTrigAsm</string>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="LowThrAsm">
+    <property name="geometry">
+     <rect>
+      <x>430</x>
+      <y>140</y>
+      <width>91</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="minimum">
+     <number>0</number>
+    </property>
+    <property name="maximum">
+     <number>4095</number>
+    </property>
+    <property name="value">
+     <number>384</number>
+    </property>
+    <property name="displayIntegerBase">
+     <number>16</number>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Label_delay_trig_6">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>430</x>
+      <y>120</y>
+      <width>121</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>LowThrAsm(hexa)</string>
+    </property>
+   </widget>
   </widget>
   <zorder>groupBox_4</zorder>
   <zorder>groupBox_5</zorder>
@@ -812,19 +1049,13 @@
   <zorder>widget</zorder>
   <zorder>lineEdit_stat</zorder>
   <zorder>label</zorder>
-  <zorder>delayTrigthor</zorder>
-  <zorder>Label_delay_trig</zorder>
-  <zorder>ModeDaqThor</zorder>
-  <zorder>Label_freqPiedthor</zorder>
-  <zorder>Label_freqPiedthorCalcul</zorder>
-  <zorder>FreqPiedThor</zorder>
-  <zorder>Label_DelayCalcul</zorder>
-  <zorder>AsmModeThor</zorder>
-  <zorder>EnableRoi</zorder>
-  <zorder>NbSamples</zorder>
-  <zorder>Label_delay_trig_2</zorder>
   <zorder>MonitoringValue</zorder>
   <zorder>label_3</zorder>
+  <zorder>RunNb</zorder>
+  <zorder>SaveTest</zorder>
+  <zorder>SaveFile</zorder>
+  <zorder>labelRunNb</zorder>
+  <zorder>groupBox_6</zorder>
  </widget>
  <resources/>
  <connections/>

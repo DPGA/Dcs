@@ -116,7 +116,7 @@ struct AMCDATA
 	u64 PrTrigCount;				// Pre_Trigger Counter
 	u64 TrigCount;					// Trigger Counter
 
-    u64 FrmCount[12];					// Frames Counters
+ //   u64 FrmCount[12];					// Frames Counters
 
 	u16 local_temperature;		// Chip Temperature
 	u16 fpga_temperature;		// FPGA Temperature

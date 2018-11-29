@@ -35,7 +35,7 @@ class Dial_AllDaq : public QDialog, public ipc
     Q_OBJECT
 
 public:
-    explicit Dial_AllDaq(CAmc *amc, CAsm* asmm, CThor *thor, u32 mask, u16 seq, QWidget *parent = 0);
+    explicit Dial_AllDaq(CAmc *amc, CAsm* asmm, CThor *thor, u32 mask, u16 seq, QString path, u64 TrigMaskThor,QWidget *parent = 0);
     ~Dial_AllDaq();
 
 private slots:
@@ -94,6 +94,16 @@ private slots:
 
     void on_MonitoringValue_editingFinished();
 
+    void on_pushButton_clicked();
+
+    void on_DeadTime_editingFinished();
+
+    void setMask(u_int64_t val);
+
+    void on_PulseTrigAsm_editingFinished();
+
+    void on_LowThrAsm_editingFinished();
+
 private:
     Ui::Dial_AllDaq *ui;
     CAmc * p_amc;
@@ -109,7 +119,7 @@ private:
     QColor m_color;
     Qt::CheckState state[NB_CHAN];
 
-    
+    void SavetoFile();
     void tip(void);
     void display(void);
     void usage(u32 use);
@@ -120,6 +130,7 @@ private:
 
     int  GetStatus(void);
     u64  ComputeMask(u32 use, u64 def_mask);
+    QString Path;
 };
 
 //===============================================

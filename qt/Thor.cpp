@@ -657,8 +657,7 @@ int CThor::ParseXmlReg(QString f_name)
 		  else if(child.attribute("TITLE") == "Jitter_Clean_8")    thordt.rw.Jitter_Clean[8] = child.attribute("VALUE").toUInt(&ret,16);
 
 //		  else if(child.attribute("TITLE") == "PreTrig_Mask")      thordt.rw.PreTrig_Mask = child.attribute("VALUE").toUInt(&ret,16);
-          else if(child.attribute("TITLE") == "PreTrig_Mask")
-              thordt.rw.PreTrig_Mask = child.attribute("VALUE").toULongLong(&ret,16);
+          else if(child.attribute("TITLE") == "PreTrig_Mask")      thordt.rw.PreTrig_Mask = child.attribute("VALUE").toULongLong(&ret,16);
 		  else if(child.attribute("TITLE") == "PreTrig_PedFreq")   thordt.rw.PreTrig_PedFreq = child.attribute("VALUE").toUInt(&ret,16);
           else if(child.attribute("TITLE") == "Trig_Shape")        thordt.rw.Trig_Shape      = child.attribute("VALUE").toUInt(&ret,16);
 		  else if(child.attribute("TITLE") == "Trig_Delay")        thordt.rw.Trig_Retardment = child.attribute("VALUE").toUInt(&ret,16);

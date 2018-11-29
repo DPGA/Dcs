@@ -13,6 +13,8 @@
 //================================================
 #include <iostream>
 #include "Tools.h"
+#include <QXmlStreamWriter>
+#include <QFile>
 //================================================
 //================================================
 const char * CtColor::none = "\033[00m";
@@ -107,3 +109,45 @@ u32 QsOrdorn (u32 var)
 //================================================
 //================================================
 //================================================
+void writerXml(QString dir,u16 *pData,u32 sizeData,QString fileName,u8 num)
+{
+
+ //      ASMDATA *AsmData = p_asm->GetData(m_use);
+       QString fileXmlName = dir + "/" + fileName + QString("%1").arg(num,2, 10, QChar('0'))+ ".xml";
+       QFile fileXml(fileXmlName);
+
+    // Ouverture du fichier en écriture et en texte. (sort de la fonction si le fichier ne s'ouvre pas)
+       if(!fileXml.open(QFile::WriteOnly | QFile::Text)) return;
+       QXmlStreamWriter writer(&fileXml);
+
+       // Active l'indentation automatique du fichier XML pour une meilleur visibilité
+       writer.setAutoFormatting(true);
+
+       // Insert la norme de codification du fichier XML :
+       writer.writeStartDocument();
+
+       // Élément racine du fichier XML
+       writer.writeStartElement("CATALOG");
+   //    u16 *datatemp = (u16 *) malloc(sizeof(ASMDATA));
+   //    memcpy(datatemp,AsmData,sizeof(ASMDATA));
+       for (unsigned int i=0;i<sizeData/2;i++) {
+            writer.writeStartElement("REG");
+            writer.writeAttribute("TITLE", "");
+            writer.writeAttribute("ADDRESS", QString("0x%1").arg((u16) i,4,16,QChar('0')));
+            writer.writeAttribute("VALUE", QString("0x%1").arg((u16) pData[i],4,16,QChar('0')));
+            writer.writeAttribute("SIZE", "1");
+            writer.writeAttribute("RW", "");
+            writer.writeAttribute("COMMENT", "");
+            writer.writeEndElement();
+       }
+
+       // Ferme l'élément site
+       writer.writeEndElement();
+
+       // Finalise le document XML
+       writer.writeEndDocument();
+
+       // Fermer le fichier pour bien enregistrer le document et ferme l'élément root
+       fileXml.close();
+
+}
